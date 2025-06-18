@@ -1,0 +1,19 @@
+.tagWrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+    border: 1px solid var(--input);
+    border-radius: 10px;
+    width: fit-content;
+    padding: 1% 1.5%;
+    transition: .3s;
+
+    cursor: pointer;
+}
+
+.checkbox{
+    background-color: transparent;
+    border: none
+}
