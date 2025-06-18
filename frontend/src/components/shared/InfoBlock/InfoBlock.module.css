@@ -1,8 +1,10 @@
-.createTaskWrapper{
-    width: 50%;
+.wrapper{
     display: flex;
     flex-direction: column;
     align-items: start;
-    justify-content: center;
     gap: 10px;
+}
+
+.wrapper span{
+    font-weight: 600;
 }

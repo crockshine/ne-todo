@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72ba26b1-aefd-43f9-b701-a60f2548bed0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/components/shared/CreateTaskInput/CreateTaskInput.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/components/shared/CreateTaskInput/CreateTaskInput.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/components/shared/Tag/Tag.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/components/shared/Tag/Tag.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/components/shared/TagList/TagList.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/components/shared/TagList/TagList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/mocks/tags.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/widgets/CreateTask/CreateTask.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/widgets/CreateTask/CreateTask.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/bun.lock" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/bun.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/styles/globals.css" afterDir="false" />
-    </list>
+    <list default="true" id="72ba26b1-aefd-43f9-b701-a60f2548bed0" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,12 +28,12 @@
     &quot;assignee&quot;: &quot;crockshine&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:crockshine/ne-todo.git",
-    "accountId": "52896678-a713-432b-a241-1aeb4cb3c65a"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:crockshine/ne-todo.git&quot;,
+    &quot;accountId&quot;: &quot;52896678-a713-432b-a241-1aeb4cb3c65a&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -60,32 +45,54 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/mihail/Desktop/Проекты/ne-todo/frontend/components/shared&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/mihail/Desktop/Проекты/ne-todo/frontend/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/mihail/Desktop/Проекты/ne-todo/frontend/src/widgets",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "ts.external.directory.path": "/Users/mihail/Desktop/Проекты/ne-todo/frontend/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/widgets" />
+      <recent name="$PROJECT_DIR$/frontend/src/components/shared" />
+      <recent name="$PROJECT_DIR$/frontend/src/components/shared/Tag" />
       <recent name="$PROJECT_DIR$/frontend/components/shared" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/widgets" />
       <recent name="$PROJECT_DIR$/frontend" />
       <recent name="$PROJECT_DIR$/frontend/styles" />
       <recent name="$PROJECT_DIR$/src/app" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -103,6 +110,7 @@
       <updated>1750221609158</updated>
       <workItem from="1750221610271" duration="11051000" />
       <workItem from="1750237941134" duration="3748000" />
+      <workItem from="1750252237221" duration="14882000" />
     </task>
     <servers />
   </component>

@@ -1,24 +1,24 @@
 import React from 'react';
 import s from "./Tag.module.css"
 import {Checkbox} from "@/components/ui/checkbox";
-import {ITab} from "@/components/shared/TagList/TagList";
+import {colorRecord, ITab} from "@/mocks/tags";
 
 interface IProps extends ITab {
-    activeTabs: string[];
-    onCheckedChange: (tabValue: string, state: boolean) => void;
+    activeTabs: number[];
+    onCheckedChange: (tabId: number, state: boolean) => void;
 }
 
-const Tag = ({name, value, color, activeTabs, onCheckedChange}: IProps) => {
-    const isChecked = activeTabs.includes(value)
+const Tag = ({id, name, value, color, activeTabs, onCheckedChange}: IProps) => {
+    const isChecked = activeTabs.includes(id)
     const tagStyles =
         isChecked
-        ? {backgroundColor: color}
+        ? {backgroundColor: colorRecord[color]}
         : {backgroundColor: 'var(--card-foreground)'};
 
     const checkboxStyles =
         isChecked
-        ? {backgroundColor: 'white', color: color}
-        : {backgroundColor: color};
+        ? {backgroundColor: 'white', color: colorRecord[color]}
+        : {backgroundColor: colorRecord[color]};
 
     return (
         <label
@@ -30,7 +30,7 @@ const Tag = ({name, value, color, activeTabs, onCheckedChange}: IProps) => {
                 id={value}
                 name={name}
                 value={value}
-                onCheckedChange={st => onCheckedChange(value, !!st) }
+                onCheckedChange={st => onCheckedChange(id, !!st) }
                 style={checkboxStyles}
                 className={s.checkbox}
             />
