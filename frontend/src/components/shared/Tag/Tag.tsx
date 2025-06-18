@@ -12,8 +12,8 @@ const Tag = ({name, value, color, activeTabs, onCheckedChange}: IProps) => {
     const isChecked = activeTabs.includes(value)
     const tagStyles =
         isChecked
-        ? {backgroundColor: color, borderColor: 'transparent'}
-        : {backgroundColor: 'transparent'};
+        ? {backgroundColor: color}
+        : {backgroundColor: 'var(--card-foreground)'};
 
     const checkboxStyles =
         isChecked

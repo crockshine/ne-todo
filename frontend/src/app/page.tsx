@@ -1,12 +1,13 @@
 import React from 'react';
-import {Button} from "@/components/ui/button";
-import CreateTaskInput from "@/components/shared/CreateTaskInput/CreateTaskInput";
 import CreateTask from "@/widgets/CreateTask/CreateTask";
+import GradientLayout from "@/layouts/GradientLayout";
+import s from './app.module.css'
 
 const Page = () => {
     return (
-        <div>
+        <div className={s.wrapper}>
             <CreateTask/>
+            <GradientLayout/>
         </div>
     );
 };

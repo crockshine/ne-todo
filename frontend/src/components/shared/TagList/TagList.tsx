@@ -30,6 +30,7 @@ const TagList = ({tabs}: IProps) => {
             {
                 tabs.map(tab =>
                     <Tag
+                        key={tab.value}
                         value={tab.value}
                         name={tab.name}
                         color={tab.color}
