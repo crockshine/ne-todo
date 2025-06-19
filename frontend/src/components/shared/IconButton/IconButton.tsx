@@ -10,7 +10,7 @@ interface IIconButtonProps {
 
 const IconButton = ({icon, label, onClick}: IIconButtonProps) => {
     return (
-        <Button className={s.wrapper} variant={"secondary"} onClick={onClick}>
+        <Button className={s.wrapper} variant={"secondary"} onClick={onClick} type="button">
             <div className={s.iconBlock}>
                 {icon}
             </div>

@@ -19,6 +19,7 @@ const CreateTask = () => {
         formState: { errors }
     } = useForm<TaskFormData>({
         resolver: zodResolver(taskSchema),
+        mode: 'onSubmit',
         defaultValues: {
             date: new Date
         }
