@@ -30,6 +30,7 @@ const Tag = ({id, name, value, color, activeTabs, onCheckedChange}: IProps) => {
                 id={value}
                 name={name}
                 value={value}
+                checked={isChecked}
                 onCheckedChange={st => onCheckedChange(id, !!st) }
                 style={checkboxStyles}
                 className={s.checkbox}

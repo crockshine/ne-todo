@@ -4,20 +4,21 @@ import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
 
 
-
-const CreateTaskInput = () => {
+const CreateTaskInput = ({...props }: React.InputHTMLAttributes<HTMLInputElement>) => {
     return (
-        <label className={s.inputWrapper} htmlFor="create-task">
-            <Input
-                id="create-task"
-                placeholder="Сварить кофе"
-            />
-            <Button
-                className={s.createTaskButton}
-            >
-                Создать
-            </Button>
-        </label>
+            <label className={s.inputWrapper} htmlFor="create-task">
+                <Input
+                    id="create-task"
+                    name="create-task"
+                    placeholder="Сварить кофе"
+                    {...props}
+                />
+                <Button
+                    className={s.createTaskButton}
+                >
+                    Создать
+                </Button>
+            </label>
     );
 };
 

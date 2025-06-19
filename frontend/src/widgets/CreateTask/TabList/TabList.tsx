@@ -1,6 +1,6 @@
 'use client'
-import React from 'react';
-import s from './TagList.module.css'
+import  {useState} from 'react';
+import s from './TabList.module.css'
 import IconButton from "@/components/shared/IconButton/IconButton";
 import { Plus } from 'lucide-react';
 import {useModal} from "@/hooks/useModal";
@@ -10,18 +10,23 @@ import {ITab} from "@/mocks/tags";
 
 interface IProps {
     tabs: ITab[];
+    onChange: (tabs: number[]) => void;
 }
 
-const TagList = ({tabs}: IProps) => {
+const TabList = ({tabs, onChange}: IProps) => {
     const modal = useModal()
-    const [activeTabs, setActiveTabs] = React.useState<number[]>([]);
+    const [activeTabs, setActiveTabs] = useState<number[]>([]);
 
     const handleChangeTab = (tabId: number, state: boolean) => {
-        if (state) {
-            setActiveTabs(prev => [...prev, tabId])
-        } else {
-            setActiveTabs(prev => prev.filter(tab => tab !== tabId));
-        }
+        setActiveTabs(prev => {
+            const newTabs =
+                state
+                ? [...prev, tabId]
+                : prev.filter(tab => tab !== tabId);
+
+            onChange(newTabs);
+            return newTabs;
+        });
     }
 
     return (
@@ -33,4 +38,4 @@ const TagList = ({tabs}: IProps) => {
     );
 };
 
-export default TagList;
+export default TabList;

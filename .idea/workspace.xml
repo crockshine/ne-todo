@@ -13,9 +13,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
         <option value="CSS File" />
-        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -71,10 +71,11 @@
       <recent name="$PROJECT_DIR$/frontend/components/shared" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/components/shared" />
+      <recent name="$PROJECT_DIR$/frontend/src/widgets/CreateTask" />
       <recent name="$PROJECT_DIR$/frontend/src/widgets" />
       <recent name="$PROJECT_DIR$/frontend" />
       <recent name="$PROJECT_DIR$/frontend/styles" />
-      <recent name="$PROJECT_DIR$/src/app" />
     </key>
   </component>
   <component name="RunManager">
@@ -110,7 +111,7 @@
       <updated>1750221609158</updated>
       <workItem from="1750221610271" duration="11051000" />
       <workItem from="1750237941134" duration="3748000" />
-      <workItem from="1750252237221" duration="14882000" />
+      <workItem from="1750252237221" duration="27272000" />
     </task>
     <servers />
   </component>

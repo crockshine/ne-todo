@@ -1,11 +1,11 @@
-"use client";
+"use client"
 import s from './AddTagModal.module.css'
 import React from 'react';
 import { Button } from "@/components/ui/button"
 import {
     Dialog,
     DialogClose,
-    DialogContent,
+    DialogContent, DialogDescription,
     DialogFooter,
     DialogHeader,
     DialogTitle,
@@ -23,40 +23,46 @@ const AddTagModal = () => {
 
     const handleChangeTab = (tabId: number, state: boolean) => {
         if (state) {
-            setActiveTabs(prev => [...prev, tabId])
+            setActiveTabs([tabId])
         } else {
             setActiveTabs(prev => prev.filter(tab => tab !== tabId));
         }
     }
 
+    const handleOpenChange = (state: boolean) => {
+        modal?.onClose(state)
+        if (!state){
+            setActiveTabs([])
+        }
+    }
+
     return (
-        <Dialog open={isOpen} onOpenChange={modal?.onClose}>
-            <form>
+        <Dialog open={isOpen} onOpenChange={handleOpenChange}>
                 <DialogContent >
                     <DialogHeader>
                         <DialogTitle>Добавить тэг</DialogTitle>
+                        <DialogDescription/>
                     </DialogHeader>
 
-                    <InfoBlock label={'Название'}>
-                        <Input className={'bg-muted'}/>
-                    </InfoBlock>
+                    <form  id={"addTagForm"} className={s.form}>
+                        <InfoBlock label={'Название'}>
+                            <Input className={'bg-muted'}/>
+                        </InfoBlock>
 
-                    <InfoBlock label={'Цвет'}>
-                        <div className={s.tagListWrapper}>
-                            <CheckboxList tabs={colors} activeTabs={activeTabs} onCheckedChange={handleChangeTab} />
-                        </div>
-                    </InfoBlock>
+                        <InfoBlock label={'Цвет'}>
+                            <div className={s.tagListWrapper}>
+                                <CheckboxList tabs={colors} activeTabs={activeTabs} onCheckedChange={handleChangeTab} />
+                            </div>
+                        </InfoBlock>
 
-
-                    <DialogFooter>
-                        <DialogClose asChild>
-                            <Button variant="outline">Отмена</Button>
-                        </DialogClose>
-                        <Button type="submit">Сохранить</Button>
-                    </DialogFooter>
-
+                        <DialogFooter>
+                            <DialogClose asChild>
+                                <Button variant="outline">Отмена</Button>
+                            </DialogClose>
+                            <Button type="submit" id={"addTagForm"}>Сохранить</Button>
+                        </DialogFooter>
+                    </form>
                 </DialogContent>
-            </form>
         </Dialog>
     );
 };

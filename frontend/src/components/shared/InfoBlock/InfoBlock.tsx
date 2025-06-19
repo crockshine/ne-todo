@@ -2,15 +2,17 @@ import React from 'react';
 import s from './InfoBlock.module.css'
 
 interface IInfoBlockProps {
-    label: string;
+    label?: string;
+    error?: string;
     children: React.ReactNode
 }
 
-const InfoBlock = ({label, children}: IInfoBlockProps) => {
+const InfoBlock = ({label, error, children}: IInfoBlockProps) => {
     return (
         <div className={s.wrapper}>
-            <span>{label}</span>
+                <p>{label}</p>
             {children}
+            <span className={s.error}>{error}</span>
         </div>
     );
 };
