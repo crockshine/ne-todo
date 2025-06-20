@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import s from './InfoBlock.module.css'
 
 interface IInfoBlockProps {
@@ -10,11 +10,11 @@ interface IInfoBlockProps {
 const InfoBlock = ({label, error, children}: IInfoBlockProps) => {
     return (
         <div className={s.wrapper}>
-                <p>{label}</p>
+            {label && <p>{label}</p>}
             {children}
-            <span className={s.error}>{error}</span>
+            {error && <span className={s.error}>{error}</span>}
         </div>
     );
 };
 
-export default InfoBlock;
+export default memo(InfoBlock);

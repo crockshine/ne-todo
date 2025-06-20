@@ -1,0 +1,55 @@
+.wrapper{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-gutter: stable;
+}
+
+.createTaskWrapper{
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.mainInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.header{
+    display: flex;
+    flex-wrap: nowrap;
+    font-weight: bold;
+    line-height: 100%;
+}
+
+.header span:first-child{
+    color: #FF0044;
+}
+
+.header span:last-child{
+    color: #004CFF;
+}
+
+.description{
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    color: #2D1992;
+}

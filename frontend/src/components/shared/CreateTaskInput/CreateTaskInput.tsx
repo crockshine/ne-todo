@@ -5,6 +5,7 @@ import {Button} from "@/components/ui/button";
 
 
 const CreateTaskInput = ({...props }: React.InputHTMLAttributes<HTMLInputElement>) => {
+    console.log('CreateTaskInput render')
     return (
             <label className={s.inputWrapper} htmlFor="create-task">
                 <Input
@@ -15,6 +16,7 @@ const CreateTaskInput = ({...props }: React.InputHTMLAttributes<HTMLInputElement
                 />
                 <Button
                     className={s.createTaskButton}
+                    type={"submit"}
                 >
                     Создать
                 </Button>

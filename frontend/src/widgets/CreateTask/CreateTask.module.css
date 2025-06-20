@@ -1,11 +1,3 @@
-.createTaskWrapper{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-    gap: 20px;
-}
 
 .deadline{
     width: 100%;

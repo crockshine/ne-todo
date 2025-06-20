@@ -5,6 +5,7 @@ import {ModalsProvider} from "@/context/ModalContext";
 import Modals from "@/modals";
 import GradientLayout from "@/layouts/GradientLayout";
 import React from "react";
+import {CreateTaskProvider} from "@/context/CreateTaskContext";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -13,7 +14,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
     title: "Ne ToDo",
-    description: "Учебный проект написанный на Next, Nes, PostgresSQL и Docker",
+    description: "Учебный проект написанный на Next, Nest, PostgresSQL и Docker",
 };
 
 export default function RootLayout({
@@ -23,13 +24,15 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${inter.variable} font-sans antialiased`}>
-                <ModalsProvider>
-                    {children}
-                    <GradientLayout/>
-                    <Modals/>
-                </ModalsProvider>
-            </body>
+        <body className={`${inter.variable} font-sans antialiased`}>
+        <ModalsProvider>
+            <CreateTaskProvider>
+                {children}
+                <GradientLayout/>
+                <Modals/>
+            </CreateTaskProvider>
+        </ModalsProvider>
+        </body>
         </html>
     );
 }

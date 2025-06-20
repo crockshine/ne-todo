@@ -1,4 +1,5 @@
 import axios from "@/lib/axios";
+import {AxiosError} from "axios";
 
 
 export interface ICreateTaskRequest {
@@ -7,11 +8,25 @@ export interface ICreateTaskRequest {
    deadline?: Date
 }
 
+// создать
 export const createTask = async (data: ICreateTaskRequest) => {
     console.log(data);
     try {
-        await axios.post("/createTask", {...data})
+        await axios.post("/tasks", {...data})
     } catch (error) {
-        console.log(error)
+        if (error instanceof AxiosError) {
+            console.log(error.response?.data?.message);
+        }
+    }
+}
+
+// получить все
+export const getAllTask = async () => {
+    try {
+        await axios.get("/tasks")
+    } catch (error) {
+        if (error instanceof AxiosError) {
+            console.log(error.response?.data?.message);
+        }
     }
 }
