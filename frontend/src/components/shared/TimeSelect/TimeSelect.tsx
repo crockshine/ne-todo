@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './TimeSelect.module.css'
 import {
     Select,
     SelectContent,
@@ -7,18 +6,24 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import {times} from "@/mocks/time";
 
-const TimeSelect = () => {
+interface ITimeSelectProps {
+    onChange: (time: string) => void;
+}
 
+const TimeSelect = ({onChange}: ITimeSelectProps) => {
     return (
-        <Select>
-            <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Theme" />
+        <Select onValueChange={onChange}>
+            <SelectTrigger >
+                <SelectValue placeholder="Время" />
             </SelectTrigger>
             <SelectContent>
-                <SelectItem value="light">Light</SelectItem>
-                <SelectItem value="dark">Dark</SelectItem>
-                <SelectItem value="system">System</SelectItem>
+                {
+                    times.map(time =>
+                        <SelectItem key={time} value={time}>{time}</SelectItem>
+                    )
+                }
             </SelectContent>
         </Select>
     );

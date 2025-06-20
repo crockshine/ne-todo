@@ -3,6 +3,8 @@ import {Inter} from "next/font/google";
 import "@/styles/globals.css";
 import {ModalsProvider} from "@/context/ModalContext";
 import Modals from "@/modals";
+import GradientLayout from "@/layouts/GradientLayout";
+import React from "react";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -24,6 +26,7 @@ export default function RootLayout({
             <body className={`${inter.variable} font-sans antialiased`}>
                 <ModalsProvider>
                     {children}
+                    <GradientLayout/>
                     <Modals/>
                 </ModalsProvider>
             </body>

@@ -14,7 +14,7 @@ import {useModal} from "@/hooks/useModal";
 import InfoBlock from "@/components/shared/InfoBlock/InfoBlock";
 import {Input} from "@/components/ui/input";
 import CheckboxList from "@/widgets/CheckboxList/CheckboxList";
-import {colors} from "@/mocks/tags";
+import {colors} from "@/mocks/colors";
 
 const AddTagModal = () => {
     const modal = useModal();

@@ -9,6 +9,9 @@ import RuCalendar from "@/components/shared/RuCalendar/RuCalendar";
 import {useForm} from "react-hook-form";
 import {TaskFormData, taskSchema} from "@/validations/add-task-validation";
 import {zodResolver} from "@hookform/resolvers/zod";
+import TimeSelect from "@/components/shared/TimeSelect/TimeSelect";
+import {createTask} from "@/api/tasks";
+import {combineDate} from "@/helpers/combineDate";
 
 const CreateTask = () => {
     const {
@@ -16,18 +19,19 @@ const CreateTask = () => {
         handleSubmit,
         setValue,
         watch,
-        formState: { errors }
+        formState: {errors}
     } = useForm<TaskFormData>({
         resolver: zodResolver(taskSchema),
         mode: 'onSubmit',
-        defaultValues: {
-            date: new Date
-        }
     })
 
-    const onSubmit = (data: TaskFormData) => {
-        console.log('Отправка данных:', data)
-        // Здесь будет ваша логика отправки
+    const onSubmit = async ({day, time, tagsId, title}: TaskFormData) => {
+        const deadline =
+            day && time
+            ? combineDate(day, time)
+            : day;
+
+        await createTask({ title, tagsId, deadline });
     }
 
     return (
@@ -37,14 +41,18 @@ const CreateTask = () => {
             </InfoBlock>
 
             <InfoBlock label={'Метка'}>
-                <TabList tabs={tabs} onChange={(tabs) => setValue('tags', tabs)}/>
+                <TabList tabs={tabs} onChange={(tabs) => setValue('tagsId', tabs)}/>
             </InfoBlock>
 
-            <InfoBlock label={'Дедлайн'} error={errors.date?.message}>
-                <RuCalendar
-                    date={watch('date')}
-                    setDate={(date) => setValue('date', date)}
-                />
+            <InfoBlock label={'Дедлайн'} error={errors.day?.message || errors.time?.message}>
+                <div className={s.deadline}>
+                    <TimeSelect onChange={time => setValue('time', time)}/>
+
+                    <RuCalendar
+                        date={watch('day')}
+                        setDate={(date) => setValue('day', date)}
+                    />
+                </div>
             </InfoBlock>
         </form>
     );

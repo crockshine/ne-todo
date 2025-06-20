@@ -1,7 +1,8 @@
 import React from 'react';
 import s from "./Tag.module.css"
 import {Checkbox} from "@/components/ui/checkbox";
-import {colorRecord, ITab} from "@/mocks/tags";
+import { ITab} from "@/mocks/tags";
+import {colorRecord} from "@/mocks/colors";
 
 interface IProps extends ITab {
     activeTabs: number[];
