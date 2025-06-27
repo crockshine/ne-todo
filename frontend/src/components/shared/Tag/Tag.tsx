@@ -3,13 +3,18 @@ import s from "./Tag.module.css"
 import {Checkbox} from "@/components/ui/checkbox";
 import { TTag} from "@/mocks/tags";
 import {colorRecord} from "@/mocks/colors";
+import { cn } from '@/lib/utils';
+import {RotateCcw} from "lucide-react";
+import {useUser} from "@/hooks/useUser";
 
 interface IProps extends TTag {
     isActive: boolean;
     onCheckedChange: (tabId: number, state: boolean) => void;
 }
 
-const Tag = ({id, value, color, isActive, onCheckedChange}: IProps) => {
+const Tag = ({id, isLoading, isError, value, color, isActive, onCheckedChange}: IProps) => {
+    const user = useUser()
+
     const tagStyles =
         isActive
             ? {backgroundColor: colorRecord[color]}
@@ -24,9 +29,14 @@ const Tag = ({id, value, color, isActive, onCheckedChange}: IProps) => {
         <label
             htmlFor={value}
             style={tagStyles}
-            className={s.tagWrapper}
+            className={cn(
+                s.tagWrapper,
+                isLoading && [s.loading, s.disabled],
+                isError && [s.error, s.disabled]
+            )}
         >
             <Checkbox
+                disabled={isLoading || isError}
                 id={value}
                 checked={isActive}
                 onCheckedChange={st => onCheckedChange(id, !!st) }
@@ -36,6 +46,8 @@ const Tag = ({id, value, color, isActive, onCheckedChange}: IProps) => {
                 {
                     value
                 }
+
+            {isError && <RotateCcw className={s.refetch} onClick={() => user?.retryAddTag(id)}/>}
         </label>
     );
 };

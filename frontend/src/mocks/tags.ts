@@ -1,12 +1,10 @@
 export interface TTag {
     id: number;
     value?: string;
-    isLoading?: boolean;
     color:number;
+    isLoading?: boolean;
+    isError?: boolean;
 }
-
-export type TColor = Required<TTag>
-
 
 export const tabs: TTag[] = [
     {

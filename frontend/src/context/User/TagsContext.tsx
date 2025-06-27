@@ -1,7 +1,7 @@
 "use client"
 import {TTag} from "@/mocks/tags";
-import React, {createContext, ReactNode, useOptimistic, useState} from "react";
-import {createTag} from "@/api/tags";
+import React, {createContext, ReactNode, startTransition, useOptimistic, useState} from "react";
+import {createTag, TCreateTag} from "@/api/tags";
 import {
     FieldErrors,
     useForm,
@@ -16,6 +16,7 @@ import {AddTagFormData, addTagSchema} from "@/validations/add-tag.validation";
 interface ITagsContext {
     optimisticTags: TTag[];
     addOptimisticTags: (tag: TTag) => Promise<void>;
+    retryAddTag: (id: number) => Promise<void>;
 
     register: UseFormRegister<AddTagFormData>;
     reset: UseFormReset<AddTagFormData>;
@@ -35,11 +36,34 @@ export const TagsProvider = ({children}: { children: ReactNode }) => {
         (state, newTag) => [...state, newTag]
     );
 
-    const addOptimisticTags = async (tag: TTag) => {
-        setOptimisticTags({...tag, isLoading: true})
+    const _createNewTag = async (tag: TCreateTag) => {
         const res = await createTag(tag)
-        if (!res) return
-        setTags(prev => [...prev, tag])
+        if (res) {
+            setTags(prev => [...prev, res])
+        } else {
+            setTags(
+                prev => [...prev, {...tag, isLoading: false, isError: true}]
+            )
+        }
+    }
+
+    const addOptimisticTags = async (tag: TCreateTag) => {
+        setOptimisticTags({...tag, isLoading: true})
+        await _createNewTag(tag)
+    }
+
+    const retryAddTag = async (id: number) => {
+        const badTag = tags.find(t => t.id === id)
+        if (badTag) {
+            setTags(prev => prev.filter(t => t.id !== id))
+            startTransition(async () =>
+                await addOptimisticTags({
+                    id: badTag.id,
+                    value: badTag.value,
+                    color: badTag.color
+                })
+            )
+        }
     }
 
     const {
@@ -55,7 +79,7 @@ export const TagsProvider = ({children}: { children: ReactNode }) => {
 
 
     return (
-        <TagsContext value={{optimisticTags, addOptimisticTags, reset, register, handleSubmit, setValue, formState }}>
+        <TagsContext value={{optimisticTags, addOptimisticTags, retryAddTag, reset, register, handleSubmit, setValue, formState }}>
             {children}
         </TagsContext>
     );

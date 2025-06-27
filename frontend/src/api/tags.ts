@@ -15,12 +15,18 @@ export const getAllTags = async () => {
 }
 
 // создать тег
-
-export const createTag = async (tag: TTag): Promise<TTag | null>  => {
+export type TCreateTag = Omit<TTag, 'isLoading' | 'isError'>
+export const createTag = async (tag: TCreateTag): Promise<TCreateTag | null>  => {
     try {
         // const {data} = await axios.post("/tags", tag)
         // return data
-        return new Promise(res => setTimeout(res, 2000))
+        const t = Math.random()
+
+        if (t < 0.5){
+            return new Promise(res => setTimeout(() => res({...tag, id: 1}), 2000))
+        } else{
+            throw new Error("There is already a tag")
+        }
     } catch (error) {
         if (error instanceof AxiosError) {
             console.log(error.response?.data?.message);

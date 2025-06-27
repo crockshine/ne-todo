@@ -35,12 +35,14 @@ const  CheckboxList = ({tabs, activeTabs, mode, setActiveTabs}: ICheckboxListPro
     }
 
     return (
-        tabs.map(tab =>
+        tabs.map((tab, i) =>
             <Tag
-                key={tab.id}
+                key={i}
                 id={tab.id}
                 value={tab.value}
                 color={tab.color}
+                isLoading={tab.isLoading}
+                isError={tab.isError}
                 isActive={activeTabs.includes(tab.id)}
                 onCheckedChange={onCheckedChange}
             />

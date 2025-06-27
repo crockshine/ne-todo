@@ -40,11 +40,11 @@ const AddTagModal = () => {
         setActiveColors([])
     }
 
-    const addTag = async ({title}: AddTagFormData) => {
+    const addTag = async ({title, color}: AddTagFormData) => {
         const newTag: TTag = {
-            id: -1,
+            id: Number(new Date()),
             value: title,
-            color: activeColors[0],
+            color: color[0],
         }
         startTransition(async ()=> await addOptimisticTags(newTag))
         modal?.closeAll()
@@ -52,8 +52,8 @@ const AddTagModal = () => {
     }
 
     const handleSetActiveTab = (tabsId: number[]) => {
-        setActiveColors(tabsId)
         setValue('color', tabsId)
+        setActiveColors(tabsId)
     }
 
     return (

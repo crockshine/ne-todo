@@ -17,3 +17,23 @@
     background-color: transparent;
     border: none
 }
+
+.disabled {
+    cursor: default;
+}
+
+.loading{
+    background-color: var(--secondary) !important;
+    opacity: .5;
+}
+
+.error{
+    background-color: var(--destructive) !important;
+}
+
+.refetch{
+    color: #ff4647 !important;
+    cursor: pointer;
+    height: 20px;
+    stroke-width: 2pt;
+}

@@ -14,9 +14,9 @@ const TabList = () => {
 
     const modal = use(ModalsContext)
     const createTasks = use(CreateTaskContext);
-    const {optimisticTags} = useUser()
+    const user = useUser()
 
-    if (!createTasks || !optimisticTags) return
+    if (!createTasks || !user) return
     const {setValue} = createTasks
 
     const handleSetActiveTab = (tabsId: number[]) => {
@@ -26,7 +26,7 @@ const TabList = () => {
 
     return (
         <div className={s.tagListWrapper}>
-            <CheckboxList tabs={optimisticTags} mode={'many'} activeTabs={activeTabs} setActiveTabs={handleSetActiveTab} />
+            <CheckboxList tabs={user.optimisticTags} mode={'many'} activeTabs={activeTabs} setActiveTabs={handleSetActiveTab} />
             <IconButton icon={<Plus />} label={'Добавить'} onClick={() => modal?.switchModal('addTag')}/>
         </div>
 
