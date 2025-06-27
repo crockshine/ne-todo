@@ -1,6 +1,6 @@
 "use client"
 import s from './AddTagModal.module.css'
-import React from 'react';
+import React, {startTransition, use, useRef, useState} from 'react';
 import { Button } from "@/components/ui/button"
 import {
     Dialog,
@@ -10,58 +10,79 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog"
-import {useModal} from "@/hooks/useModal";
 import InfoBlock from "@/components/shared/InfoBlock/InfoBlock";
 import {Input} from "@/components/ui/input";
 import CheckboxList from "@/widgets/CheckboxList/CheckboxList";
 import {colors} from "@/mocks/colors";
+import ModalsContext from "@/context/Modal/ModalContext";
+import { TTag } from '@/mocks/tags';
+import {useUser} from "@/hooks/useUser";
+import {AddTagFormData} from "@/validations/add-tag.validation";
 
 const AddTagModal = () => {
-    const modal = useModal();
-    const isOpen = modal?.isOpen('addTag')
-    const [activeTabs, setActiveTabs] = React.useState<number[]>([]);
+    const [activeColors, setActiveColors] = useState<number[]>([]);
 
-    const handleChangeTab = (tabId: number, state: boolean) => {
-        if (state) {
-            setActiveTabs([tabId])
-        } else {
-            setActiveTabs(prev => prev.filter(tab => tab !== tabId));
-        }
-    }
+    const modal = use(ModalsContext)
+    const isOpen = modal?.isOpen('addTag')
+
+    const user = useUser()
+    if (!user) return
+    const {handleSubmit, addOptimisticTags, register, setValue, formState, reset} = user
+
 
     const handleOpenChange = (state: boolean) => {
         modal?.onClose(state)
-        if (!state){
-            setActiveTabs([])
+        if (!state) resetForm()
+    }
+
+    const resetForm = () => {
+        reset()
+        setActiveColors([])
+    }
+
+    const addTag = async ({title}: AddTagFormData) => {
+        const newTag: TTag = {
+            id: -1,
+            value: title,
+            color: activeColors[0],
         }
+        startTransition(async ()=> await addOptimisticTags(newTag))
+        modal?.closeAll()
+        resetForm()
+    }
+
+    const handleSetActiveTab = (tabsId: number[]) => {
+        setActiveColors(tabsId)
+        setValue('color', tabsId)
     }
 
     return (
         <Dialog open={isOpen} onOpenChange={handleOpenChange}>
-                <DialogContent >
+                <DialogContent>
                     <DialogHeader>
                         <DialogTitle>Добавить тэг</DialogTitle>
                         <DialogDescription/>
                     </DialogHeader>
 
-                    <form  id={"addTagForm"} className={s.form}>
-                        <InfoBlock label={'Название'}>
-                            <Input className={'bg-muted'}/>
+                    <form onSubmit={handleSubmit(addTag)} id={"addTagForm"} className={s.form}>
+                        <InfoBlock label={'Название'} error={formState.errors.title?.message}>
+                            <Input className={'bg-secondary'} {...register('title')}/>
                         </InfoBlock>
 
-                        <InfoBlock label={'Цвет'}>
+                        <InfoBlock label={'Цвет'} error={formState.errors.color?.message}>
                             <div className={s.tagListWrapper}>
-                                <CheckboxList tabs={colors} activeTabs={activeTabs} onCheckedChange={handleChangeTab} />
+                                <CheckboxList tabs={colors} mode={'one'} setActiveTabs={handleSetActiveTab} activeTabs={activeColors}/>
                             </div>
                         </InfoBlock>
 
-                        <DialogFooter>
+                        <DialogFooter >
                             <DialogClose asChild>
                                 <Button variant="outline">Отмена</Button>
                             </DialogClose>
                             <Button type="submit" id={"addTagForm"}>Сохранить</Button>
                         </DialogFooter>
                     </form>
+
                 </DialogContent>
         </Dialog>
     );

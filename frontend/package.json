@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "node_modules/.bin/next dev --turbopack",
-    "build": "src/node_modules/.bin/next build",
-    "start": "src/node_modules/.bin/next start",
-    "lint": "src/node_modules/.bin/next lint"
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",

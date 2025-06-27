@@ -1,37 +1,32 @@
 'use client'
-import  {useState} from 'react';
+import {use, useState} from 'react';
 import s from './TabList.module.css'
 import IconButton from "@/components/shared/IconButton/IconButton";
 import { Plus } from 'lucide-react';
-import {useModal} from "@/hooks/useModal";
 import CheckboxList from "@/widgets/CheckboxList/CheckboxList";
-import {ITab} from "@/mocks/tags";
+import ModalsContext from "@/context/Modal/ModalContext";
+import CreateTaskContext from "@/context/CreateTask/CreateTaskContext";
+import {useUser} from "@/hooks/useUser";
 
 
-interface IProps {
-    tabs: ITab[];
-    onChange: (tabs: number[]) => void;
-}
+const TabList = () => {
+    const [activeTabs, setActiveTabs] = useState<number[]>([])
 
-const TabList = ({tabs, onChange}: IProps) => {
-    const modal = useModal()
-    const [activeTabs, setActiveTabs] = useState<number[]>([]);
+    const modal = use(ModalsContext)
+    const createTasks = use(CreateTaskContext);
+    const {optimisticTags} = useUser()
 
-    const handleChangeTab = (tabId: number, state: boolean) => {
-        setActiveTabs(prev => {
-            const newTabs =
-                state
-                ? [...prev, tabId]
-                : prev.filter(tab => tab !== tabId);
+    if (!createTasks || !optimisticTags) return
+    const {setValue} = createTasks
 
-            onChange(newTabs);
-            return newTabs;
-        });
+    const handleSetActiveTab = (tabsId: number[]) => {
+        setValue('tagsId', tabsId)
+        setActiveTabs(tabsId)
     }
 
     return (
         <div className={s.tagListWrapper}>
-            <CheckboxList tabs={tabs} activeTabs={activeTabs} onCheckedChange={handleChangeTab} />
+            <CheckboxList tabs={optimisticTags} mode={'many'} activeTabs={activeTabs} setActiveTabs={handleSetActiveTab} />
             <IconButton icon={<Plus />} label={'Добавить'} onClick={() => modal?.switchModal('addTag')}/>
         </div>
 

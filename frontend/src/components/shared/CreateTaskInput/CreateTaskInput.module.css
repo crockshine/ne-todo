@@ -1,14 +1,14 @@
 .inputWrapper{
     width: 100%;
     display: flex;
+    justify-content: space-between;
     flex-wrap: nowrap;
     padding: 5px;
     border-radius: 30px;
-    background-color: var(--card);
+    background-color: var(--card-foreground);
     backdrop-filter: blur(10px);
     gap: 3%;
     height: 60px;
-
 }
 
 .inputWrapper input{
@@ -16,7 +16,6 @@
     padding-left: 20px;
     font-size: 18px;
     height: 100%;
-
 }
 
 .createTaskButton{

@@ -1,0 +1,22 @@
+.icon{
+    position: absolute;
+    aspect-ratio: 1/1;
+}
+
+.next{
+    width: 21vw;
+    top: 10%;
+    right: 10%;
+}
+
+.nest{
+    width: 23vw;
+    bottom: 25%;
+    left: 10%;
+}
+
+.docker{
+    width: 20vw;
+    bottom: 3%;
+    right: 25%;
+}

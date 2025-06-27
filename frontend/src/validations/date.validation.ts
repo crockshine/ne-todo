@@ -2,7 +2,7 @@ import {combineDate} from "@/helpers/combineDate";
 
 export const validateDateTime = (day: Date | undefined, time: string | undefined) => {
     if (time && !day) {
-        return { isValid: false, error: 'Нельзя указать время без даты' };
+        return { isValid: false, error: 'нельзя указать время без даты' };
     }
 
     if (day && time) {
@@ -10,7 +10,7 @@ export const validateDateTime = (day: Date | undefined, time: string | undefined
         const selectedDateTime = combineDate(day, time);
 
         if (selectedDateTime.toDateString() === now.toDateString() && selectedDateTime < now) {
-            return { isValid: false, error: 'Время не может быть меньше текущего' };
+            return { isValid: false, error: 'время не может быть меньше текущего' };
         }
     }
 

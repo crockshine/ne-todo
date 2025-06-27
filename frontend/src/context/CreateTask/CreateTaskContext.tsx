@@ -1,5 +1,5 @@
 "use client";
-import {TaskFormData, taskSchema} from '@/validations/add-task-validation';
+import {TaskFormData, taskSchema} from '@/validations/add-task.validation';
 import React, {createContext, ReactNode} from 'react';
 import {
     useForm,
@@ -38,7 +38,7 @@ export const CreateTaskProvider = ({children}: CreateTaskProviderProps) => {
         formState
     } = useForm<TaskFormData>({
         resolver: zodResolver(taskSchema),
-        mode: 'onBlur',
+        mode: 'all',
     });
 
     const onSubmit = async ({day, time, tagsId, title}: TaskFormData) => {
@@ -51,9 +51,9 @@ export const CreateTaskProvider = ({children}: CreateTaskProviderProps) => {
     }
 
     return (
-        <CreateTaskContext.Provider value={{onSubmit, register, handleSubmit,setValue, watch, formState }}>
+        <CreateTaskContext value={{onSubmit, register, handleSubmit,setValue, watch, formState }}>
             {children}
-        </CreateTaskContext.Provider>
+        </CreateTaskContext>
     );
 };
 

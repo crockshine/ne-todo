@@ -5,13 +5,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72ba26b1-aefd-43f9-b701-a60f2548bed0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/components.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/postcss.config.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/bun.lock" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/bun.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/docker.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/nest.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/next.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/shared/AnimateImage/AnimateImage.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/shared/AnimateImage/AnimateImage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/context/User/TagsContext.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/context/User/UserContext.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/hooks/useUser.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/validations/add-tag.validation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/file.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/globe.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/next.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/vercel.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/window.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/api/tags.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/tags.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/(root)/create/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/(root)/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/(root)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/(root)/root-layout.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/root-layout.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/shared/CreateTaskInput/CreateTaskInput.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/shared/CreateTaskInput/CreateTaskInput.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/shared/CreateTaskInput/CreateTaskInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/shared/CreateTaskInput/CreateTaskInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/shared/InfoBlock/InfoBlock.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/shared/InfoBlock/InfoBlock.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/shared/Tag/Tag.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/shared/Tag/Tag.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/shared/TimeSelect/TimeSelect.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/shared/TimeSelect/TimeSelect.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/shared/TimeSelect/TimeSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/shared/TimeSelect/TimeSelect.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/context/CreateTaskContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/context/CreateTask/CreateTaskContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/context/ModalContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/context/Modal/ModalContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/useCreateTask.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/useModal.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/mocks/colors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/mocks/colors.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/mocks/tags.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/mocks/tags.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/modals/AddTagModal/AddTagModal.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/modals/AddTagModal/AddTagModal.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/modals/AddTagModal/AddTagModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/modals/AddTagModal/AddTagModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/modals/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/modals/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/validations/add-task-validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/validations/add-task.validation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/validations/date-validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/validations/date.validation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/widgets/CheckboxList/CheckboxList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/widgets/CheckboxList/CheckboxList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/widgets/CreateTask/CreateTask.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/widgets/CreateTask/CreateTask.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/widgets/CreateTask/CreateTask.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/widgets/CreateTask/CreateTask.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/widgets/CreateTask/TabList/TabList.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/widgets/CreateTask/TabList/TabList.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/widgets/CreateTask/TabList/TabList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/widgets/CreateTask/TabList/TabList.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +59,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="TypeScript JSX File" />
+        <option value="CSS File" />
         <option value="TypeScript File" />
       </list>
     </option>
@@ -53,38 +91,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/mihail/Desktop/projects/ne-todo/frontend",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
-    "ts.external.directory.path": "/Users/mihail/Desktop/projects/ne-todo/backend/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/mihail/Desktop/projects/ne-todo/frontend/public&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/mihail/Desktop/projects/ne-todo/backend/node_modules/prettier&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/mihail/Desktop/projects/ne-todo/backend/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/public" />
       <recent name="$PROJECT_DIR$/frontend" />
       <recent name="$PROJECT_DIR$/frontend/src" />
       <recent name="$PROJECT_DIR$/frontend/src/widgets" />
       <recent name="$PROJECT_DIR$/frontend/src/components/shared" />
-      <recent name="$PROJECT_DIR$/frontend/src/components/shared/Tag" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/context/Modal" />
+      <recent name="$PROJECT_DIR$/frontend/src/context/CreateTaskContext" />
+      <recent name="$PROJECT_DIR$/frontend/src/context/User" />
+      <recent name="$PROJECT_DIR$/frontend/src/app" />
       <recent name="$PROJECT_DIR$/frontend" />
-      <recent name="$PROJECT_DIR$/frontend/src/components/shared" />
-      <recent name="$PROJECT_DIR$/frontend/src/widgets/CreateTask" />
-      <recent name="$PROJECT_DIR$/frontend/src/widgets" />
-      <recent name="$PROJECT_DIR$/frontend/styles" />
     </key>
   </component>
   <component name="RunManager">
@@ -127,11 +166,28 @@
       <workItem from="1750454492000" duration="39000" />
       <workItem from="1750454685363" duration="12000" />
       <workItem from="1750454702228" duration="32000" />
-      <workItem from="1750455055060" duration="1102000" />
+      <workItem from="1750455055060" duration="1197000" />
+      <workItem from="1750489938036" duration="4549000" />
+      <workItem from="1750502357580" duration="400000" />
+      <workItem from="1750503403738" duration="5667000" />
+      <workItem from="1750617034849" duration="1109000" />
+      <workItem from="1750878315354" duration="294000" />
+      <workItem from="1750879657275" duration="11596000" />
+      <workItem from="1750967927886" duration="5332000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/frontend/src/modals/index.tsx</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

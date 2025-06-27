@@ -1,18 +1,18 @@
 import { z } from 'zod';
 import { times } from "@/mocks/time";
-import {validateDateTime} from "@/validations/date-validation";
+import {validateDateTime} from "@/validations/date.validation";
 
 const todayStart = new Date();
 todayStart.setHours(0, 0, 0, 0);
 
 export const taskSchema = z.object({
-    title: z.string().min(1, 'Название не может быть пустым'),
+    title: z.string().min(1, 'название не может быть пустым'),
     tagsId: z.array(z.number()).optional(),
     day: z.date()
-        .min(todayStart, 'Дата не может быть меньше сегодняшней')
+        .min(todayStart, 'дата не может быть меньше сегодняшней')
         .optional(),
     time: z.string()
-        .refine(val => times.some(time => time === val), 'Неверный формат времени')
+        .refine(val => times.some(time => time === val), 'неверный формат времени')
         .optional()
 }).superRefine((data, ctx) => {
     const { isValid, error } = validateDateTime(data.day, data.time);

@@ -11,7 +11,7 @@ const CreateTaskInput = ({...props }: React.InputHTMLAttributes<HTMLInputElement
                 <Input
                     id="create-task"
                     name="create-task"
-                    placeholder="Сварить кофе"
+                    placeholder="Название задачи"
                     {...props}
                 />
                 <Button

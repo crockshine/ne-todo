@@ -1,25 +1,47 @@
 'use client'
 import React from 'react';
 import Tag from "@/components/shared/Tag/Tag";
-import {ITab} from "@/mocks/tags";
-
+import {TTag} from "@/mocks/tags";
 
 interface ICheckboxListProps {
-    tabs: ITab[];
+    tabs: TTag[];
+    mode: 'one' | 'many';
     activeTabs: number[];
-    onCheckedChange: (tabId: number, state: boolean) => void;
+    setActiveTabs: (tagsId: number[]) => void;
 }
 
-const CheckboxList = ({tabs, activeTabs, onCheckedChange}: ICheckboxListProps) => {
+const  CheckboxList = ({tabs, activeTabs, mode, setActiveTabs}: ICheckboxListProps) => {
+
+    const _manyChangeTab = (tabId: number, state: boolean) => {
+        const newTabs =
+            state ? [...activeTabs, tabId] : activeTabs.filter(tab => tab !== tabId);
+
+        setActiveTabs(newTabs);
+    }
+
+    const _oneChangeTab = (tabId: number, state: boolean) => {
+        if (state)
+        { setActiveTabs([tabId]) }
+        else
+        { setActiveTabs(activeTabs.filter(tab => tab !== tabId)) }
+
+    }
+
+    const onCheckedChange = (tabId: number, state: boolean) => {
+        if (mode === 'one')
+        { _oneChangeTab(tabId, state); }
+        else
+        { _manyChangeTab(tabId, state) }
+    }
+
     return (
         tabs.map(tab =>
             <Tag
                 key={tab.id}
                 id={tab.id}
                 value={tab.value}
-                name={tab.name}
                 color={tab.color}
-                activeTabs={activeTabs}
+                isActive={activeTabs.includes(tab.id)}
                 onCheckedChange={onCheckedChange}
             />
         )

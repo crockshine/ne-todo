@@ -1,4 +1,4 @@
-import {ITab} from "@/mocks/tags";
+import {TTag} from "@/mocks/tags";
 
 export const colorRecord: Record<number, string> = {
     1: '#FF2E2EFF',
@@ -8,30 +8,25 @@ export const colorRecord: Record<number, string> = {
     5: '#ff2eee',
 }
 
-export const colors: ITab[] = [
+export const colors: TTag[] = [
     {
         id: 1,
-        name: 'color',
         color: 1
     },
     {
         id: 2,
-        name: 'color',
         color: 2
     },
     {
         id: 3,
-        name: 'color',
         color: 3
     },
     {
         id: 4,
-        name: 'color',
         color: 4
     },
     {
         id: 5,
-        name: 'color',
         color: 5
     }
 ]

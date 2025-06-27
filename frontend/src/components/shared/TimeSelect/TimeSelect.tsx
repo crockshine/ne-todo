@@ -1,4 +1,5 @@
 import React from 'react';
+import s from './TimeSelect.module.css'
 import {
     Select,
     SelectContent,
@@ -15,7 +16,7 @@ interface ITimeSelectProps {
 const TimeSelect = ({onChange}: ITimeSelectProps) => {
     return (
         <Select onValueChange={onChange}>
-            <SelectTrigger >
+            <SelectTrigger className={s.select}>
                 <SelectValue placeholder="Время" />
             </SelectTrigger>
             <SelectContent>
