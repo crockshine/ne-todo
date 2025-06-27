@@ -6,7 +6,8 @@ import Modals from "@/modals";
 import GradientLayout from "@/layouts/GradientLayout";
 import React from "react";
 import {CreateTaskProvider} from "@/context/CreateTask/CreateTaskContext";
-import {UserProvider} from "@/context/User/UserContext";
+// import {UserProvider} from "@/context/User/UserContext";
+import {TagsProvider} from "@/context/User/TagsContext";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -28,11 +29,13 @@ export default function RootLayout({
         <body className={`${inter.variable} font-sans antialiased`}>
         <ModalsProvider>
             <CreateTaskProvider>
-                <UserProvider>
+                {/*<UserProvider>*/}
+                <TagsProvider>
                     {children}
                     <GradientLayout/>
                     <Modals/>
-                </UserProvider>
+                </TagsProvider>
+                {/*</UserProvider>*/}
             </CreateTaskProvider>
         </ModalsProvider>
         </body>

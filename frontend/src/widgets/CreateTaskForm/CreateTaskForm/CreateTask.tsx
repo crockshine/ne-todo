@@ -1,7 +1,7 @@
 "use client"
 import React, {use} from 'react';
 import s from './CreateTask.module.css'
-import TabList from "@/widgets/CreateTask/TabList/TabList";
+import TagList from "@/widgets/CreateTaskForm/TagList/TagList";
 import InfoBlock from "@/components/shared/InfoBlock/InfoBlock";
 import RuCalendar from "@/components/shared/RuCalendar/RuCalendar";
 import TimeSelect from "@/components/shared/TimeSelect/TimeSelect";
@@ -16,7 +16,7 @@ const CreateTask = () => {
         <>
             <InfoBlock label={'Метка'}>
                 {/*связь с контекстом внутри*/}
-                <TabList/>
+                <TagList/>
             </InfoBlock>
 
             <InfoBlock label={'Дедлайн'} error={formState.errors.day?.message || formState.errors.time?.message}>

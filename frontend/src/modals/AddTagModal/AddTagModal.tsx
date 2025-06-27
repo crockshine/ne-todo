@@ -1,6 +1,6 @@
 "use client"
 import s from './AddTagModal.module.css'
-import React, {startTransition, use, useRef, useState} from 'react';
+import React, {startTransition, use,  useState} from 'react';
 import { Button } from "@/components/ui/button"
 import {
     Dialog,
@@ -15,9 +15,9 @@ import {Input} from "@/components/ui/input";
 import CheckboxList from "@/widgets/CheckboxList/CheckboxList";
 import {colors} from "@/mocks/colors";
 import ModalsContext from "@/context/Modal/ModalContext";
-import { TTag } from '@/mocks/tags';
 import {useUser} from "@/hooks/useUser";
 import {AddTagFormData} from "@/validations/add-tag.validation";
+import {TCreateTag} from "@/api/tags";
 
 const AddTagModal = () => {
     const [activeColors, setActiveColors] = useState<number[]>([]);
@@ -41,9 +41,9 @@ const AddTagModal = () => {
     }
 
     const addTag = async ({title, color}: AddTagFormData) => {
-        const newTag: TTag = {
-            id: Number(new Date()),
-            value: title,
+        const newTag: TCreateTag = {
+            id: new Date().toString(),
+            value: title.trim().toLowerCase(),
             color: color[0],
         }
         startTransition(async ()=> await addOptimisticTags(newTag))
@@ -64,7 +64,9 @@ const AddTagModal = () => {
                         <DialogDescription/>
                     </DialogHeader>
 
-                    <form onSubmit={handleSubmit(addTag)} id={"addTagForm"} className={s.form}>
+                    <form
+                        onSubmit={handleSubmit(addTag)}
+                        id={"addTagForm"} className={s.form}>
                         <InfoBlock label={'Название'} error={formState.errors.title?.message}>
                             <Input className={'bg-secondary'} {...register('title')}/>
                         </InfoBlock>

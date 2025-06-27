@@ -1,6 +1,6 @@
 'use client'
 import {use, useState} from 'react';
-import s from './TabList.module.css'
+import s from './TagList.module.css'
 import IconButton from "@/components/shared/IconButton/IconButton";
 import { Plus } from 'lucide-react';
 import CheckboxList from "@/widgets/CheckboxList/CheckboxList";
@@ -9,7 +9,7 @@ import CreateTaskContext from "@/context/CreateTask/CreateTaskContext";
 import {useUser} from "@/hooks/useUser";
 
 
-const TabList = () => {
+const TagList = () => {
     const [activeTabs, setActiveTabs] = useState<number[]>([])
 
     const modal = use(ModalsContext)
@@ -33,4 +33,4 @@ const TabList = () => {
     );
 };
 
-export default TabList;
+export default TagList;

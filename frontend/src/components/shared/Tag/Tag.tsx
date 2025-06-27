@@ -27,7 +27,7 @@ const Tag = ({id, isLoading, isError, value, color, isActive, onCheckedChange}: 
 
     return (
         <label
-            htmlFor={value}
+            htmlFor={id}
             style={tagStyles}
             className={cn(
                 s.tagWrapper,
@@ -37,7 +37,7 @@ const Tag = ({id, isLoading, isError, value, color, isActive, onCheckedChange}: 
         >
             <Checkbox
                 disabled={isLoading || isError}
-                id={value}
+                id={id}
                 checked={isActive}
                 onCheckedChange={st => onCheckedChange(id, !!st) }
                 style={checkboxStyles}

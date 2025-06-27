@@ -7,14 +7,21 @@
     <list default="true" id="72ba26b1-aefd-43f9-b701-a60f2548bed0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/api/tags.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/tags.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/shared/Tag/Tag.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/shared/Tag/Tag.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/shared/Tag/Tag.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/shared/Tag/Tag.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/context/User/TagsContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/context/User/TagsContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/context/User/UserContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/context/User/UserContext.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/mocks/tags.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/mocks/tags.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/modals/AddTagModal/AddTagModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/modals/AddTagModal/AddTagModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/validations/add-tag.validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/validations/add-tag.validation.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/widgets/CheckboxList/CheckboxList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/widgets/CheckboxList/CheckboxList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/widgets/CreateTask/TabList/TabList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/widgets/CreateTask/TabList/TabList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/widgets/CreateTask/CreateTask.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/widgets/CreateTaskForm/CreateTaskForm/CreateTask.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/widgets/CreateTask/CreateTask.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/widgets/CreateTaskForm/CreateTaskForm/CreateTask.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/widgets/CreateTask/TabList/TabList.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/widgets/CreateTaskForm/TagList/TagList.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/widgets/CreateTask/TabList/TabList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/widgets/CreateTaskForm/TagList/TagList.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,11 +91,11 @@
       <recent name="$PROJECT_DIR$/frontend/src/components/shared" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/widgets/CreateTaskForm/CreateTaskForm" />
       <recent name="$PROJECT_DIR$/frontend/src/context/Modal" />
       <recent name="$PROJECT_DIR$/frontend/src/context/CreateTaskContext" />
       <recent name="$PROJECT_DIR$/frontend/src/context/User" />
       <recent name="$PROJECT_DIR$/frontend/src/app" />
-      <recent name="$PROJECT_DIR$/frontend" />
     </key>
   </component>
   <component name="RunManager">
@@ -138,7 +145,7 @@
       <workItem from="1750617034849" duration="1109000" />
       <workItem from="1750878315354" duration="294000" />
       <workItem from="1750879657275" duration="11596000" />
-      <workItem from="1750967927886" duration="12207000" />
+      <workItem from="1750967927886" duration="24234000" />
     </task>
     <servers />
   </component>

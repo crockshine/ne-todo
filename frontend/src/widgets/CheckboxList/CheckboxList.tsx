@@ -10,8 +10,7 @@ interface ICheckboxListProps {
     setActiveTabs: (tagsId: number[]) => void;
 }
 
-const  CheckboxList = ({tabs, activeTabs, mode, setActiveTabs}: ICheckboxListProps) => {
-
+const CheckboxList = ({tabs, activeTabs, mode, setActiveTabs}: ICheckboxListProps) => {
     const _manyChangeTab = (tabId: number, state: boolean) => {
         const newTabs =
             state ? [...activeTabs, tabId] : activeTabs.filter(tab => tab !== tabId);
@@ -35,9 +34,9 @@ const  CheckboxList = ({tabs, activeTabs, mode, setActiveTabs}: ICheckboxListPro
     }
 
     return (
-        tabs.map((tab, i) =>
+        tabs.map(tab=>
             <Tag
-                key={i}
+                key={tab.id}
                 id={tab.id}
                 value={tab.value}
                 color={tab.color}

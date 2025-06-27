@@ -23,7 +23,7 @@ export const createTag = async (tag: TCreateTag): Promise<TCreateTag | null>  =>
         const t = Math.random()
 
         if (t < 0.5){
-            return new Promise(res => setTimeout(() => res({...tag, id: 1}), 2000))
+            return new Promise(res => setTimeout(() => res({...tag, id: Date.now()}), 2000))
         } else{
             throw new Error("There is already a tag")
         }

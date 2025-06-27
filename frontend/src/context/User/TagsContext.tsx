@@ -13,9 +13,9 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {AddTagFormData, addTagSchema} from "@/validations/add-tag.validation";
 
 
-interface ITagsContext {
+export interface ITagsContext {
     optimisticTags: TTag[];
-    addOptimisticTags: (tag: TTag) => Promise<void>;
+    addOptimisticTags: (tag: TCreateTag) => Promise<void>;
     retryAddTag: (id: number) => Promise<void>;
 
     register: UseFormRegister<AddTagFormData>;
@@ -33,22 +33,26 @@ export const TagsProvider = ({children}: { children: ReactNode }) => {
     const [tags, setTags] = useState<TTag[]>([]);
     const [optimisticTags, setOptimisticTags] = useOptimistic<TTag[], TTag>(
         tags,
-        (state, newTag) => [...state, newTag]
+        (state, newTag) => [...state, {...newTag, isLoading: true}]
     );
 
     const _createNewTag = async (tag: TCreateTag) => {
         const res = await createTag(tag)
         if (res) {
-            setTags(prev => [...prev, res])
+            startTransition(() => {
+                setTags(prev => [...prev, {...res, isLoading: false}]);
+            })
         } else {
-            setTags(
-                prev => [...prev, {...tag, isLoading: false, isError: true}]
-            )
+            startTransition(() => {
+                setTags(
+                    prev => [...prev, {...tag, isLoading: false, isError: true}]
+                )
+            })
         }
     }
 
     const addOptimisticTags = async (tag: TCreateTag) => {
-        setOptimisticTags({...tag, isLoading: true})
+        setOptimisticTags(tag)
         await _createNewTag(tag)
     }
 
@@ -73,7 +77,7 @@ export const TagsProvider = ({children}: { children: ReactNode }) => {
         reset,
         formState
     } = useForm<AddTagFormData>({
-        resolver: zodResolver(addTagSchema),
+        resolver: zodResolver(addTagSchema(optimisticTags)),
         mode: 'onSubmit',
     });
 
