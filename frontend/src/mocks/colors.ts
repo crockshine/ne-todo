@@ -1,32 +1,24 @@
-import {TTag} from "@/mocks/tags";
+import {ICheckbox} from "@/types/checkbox.interface";
 
-export const colorRecord: Record<number, string> = {
-    1: '#FF2E2EFF',
-    2: '#ffd52e',
-    3: '#a1ff2e',
-    4: '#2e69ff',
-    5: '#ff2eee',
-}
-
-export const colors: TTag[] = [
+export const colors: ICheckbox[] = [
     {
-        id: 1,
-        color: 1
+        id: '1',
+        color: '#FF2E2EFF'
     },
     {
-        id: 2,
-        color: 2
+        id: '2',
+        color: '#ffd52e'
     },
     {
-        id: 3,
-        color: 3
+        id: '3',
+        color: '#a1ff2e'
     },
     {
-        id: 4,
-        color: 4
+        id: '4',
+        color: '#2e69ff'
     },
     {
-        id: 5,
-        color: 5
+        id: '5',
+        color: '#ff2eee'
     }
 ]

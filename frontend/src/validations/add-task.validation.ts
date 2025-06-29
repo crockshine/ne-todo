@@ -7,7 +7,7 @@ todayStart.setHours(0, 0, 0, 0);
 
 export const taskSchema = z.object({
     title: z.string().min(1, 'название не может быть пустым'),
-    tagsId: z.array(z.number()).optional(),
+    tagsId: z.array(z.string()).optional(),
     day: z.date()
         .min(todayStart, 'дата не может быть меньше сегодняшней')
         .optional(),

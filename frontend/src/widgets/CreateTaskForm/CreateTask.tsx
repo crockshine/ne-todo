@@ -1,7 +1,7 @@
 "use client"
 import React, {use} from 'react';
 import s from './CreateTask.module.css'
-import TagList from "@/widgets/CreateTaskForm/TagList/TagList";
+import TagList from "@/widgets/TagList/TagList";
 import InfoBlock from "@/components/shared/InfoBlock/InfoBlock";
 import RuCalendar from "@/components/shared/RuCalendar/RuCalendar";
 import TimeSelect from "@/components/shared/TimeSelect/TimeSelect";

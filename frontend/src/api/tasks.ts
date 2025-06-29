@@ -4,7 +4,7 @@ import {AxiosError} from "axios";
 
 export interface ICreateTaskRequest {
    title: string;
-   tagsId?: number[];
+   tagsId?: string[];
    deadline?: Date
 }
 

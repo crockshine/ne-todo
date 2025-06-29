@@ -1,0 +1,47 @@
+
+.tagWrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    
+    border-radius: 15px;
+    width: fit-content;
+    height: 42px;
+    min-width: 42px;
+    padding: 8px;
+    transition: .3s;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.checkbox{
+    background-color: transparent;
+    border: none;
+}
+
+.disabled {
+    cursor: default;
+}
+
+@keyframes loading {
+    0% { opacity: .2; }
+    100% { opacity: .8; }
+}
+
+.loading{
+    background-color: var(--secondary) !important;
+    animation: loading .5s ease-in-out infinite alternate;
+}
+
+.error{
+    background-color: var(--destructive) !important;
+}
+
+.refetch{
+    color: #ff4647 !important;
+    cursor: pointer;
+    height: 20px;
+    stroke-width: 2pt;
+}

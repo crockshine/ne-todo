@@ -1,15 +1,14 @@
 import {z} from "zod";
-import {TTag} from "@/mocks/tags";
+import {ITag} from "@/types/checkbox.interface";
 
-export const addTagSchema = (tags: TTag[]) =>
+export const addTagSchema = (tags: ITag[]) =>
     z.object({
         title: z.string()
             .trim()
             .min(1, 'название не может быть пустым')
             .max(10, 'название не может быть длиннее 10 символов'),
-        color: z.array(
-            z.number(), {message: 'укажите цвет'})
-            .max(1, 'цвет должен быть один')
+        color: z.string({message: 'укажите цвет'})
+
     }).superRefine((data, ctx) => {
         if (!tags) return;
 

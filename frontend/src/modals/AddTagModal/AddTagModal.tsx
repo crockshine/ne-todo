@@ -1,6 +1,6 @@
 "use client"
 import s from './AddTagModal.module.css'
-import React, {startTransition, use,  useState} from 'react';
+import React, {startTransition,  use, } from 'react';
 import { Button } from "@/components/ui/button"
 import {
     Dialog,
@@ -12,22 +12,19 @@ import {
 } from "@/components/ui/dialog"
 import InfoBlock from "@/components/shared/InfoBlock/InfoBlock";
 import {Input} from "@/components/ui/input";
-import CheckboxList from "@/widgets/CheckboxList/CheckboxList";
-import {colors} from "@/mocks/colors";
+import ColorList from "@/widgets/ColorList/ColorList";
 import ModalsContext from "@/context/Modal/ModalContext";
 import {useUser} from "@/hooks/useUser";
 import {AddTagFormData} from "@/validations/add-tag.validation";
-import {TCreateTag} from "@/api/tags";
+import {ITag} from "@/types/checkbox.interface";
 
 const AddTagModal = () => {
-    const [activeColors, setActiveColors] = useState<number[]>([]);
-
     const modal = use(ModalsContext)
     const isOpen = modal?.isOpen('addTag')
 
     const user = useUser()
     if (!user) return
-    const {handleSubmit, addOptimisticTags, register, setValue, formState, reset} = user
+    const {handleSubmit, addOptimisticTags, register, formState, reset} = user
 
 
     const handleOpenChange = (state: boolean) => {
@@ -37,24 +34,19 @@ const AddTagModal = () => {
 
     const resetForm = () => {
         reset()
-        setActiveColors([])
     }
 
-    const addTag = async ({title, color}: AddTagFormData) => {
-        const newTag: TCreateTag = {
+    const addTag = ({title, color}: AddTagFormData) => {
+        const newTag: ITag = {
             id: new Date().toString(),
             value: title.trim().toLowerCase(),
-            color: color[0],
+            color: color,
         }
         startTransition(async ()=> await addOptimisticTags(newTag))
         modal?.closeAll()
         resetForm()
     }
 
-    const handleSetActiveTab = (tabsId: number[]) => {
-        setValue('color', tabsId)
-        setActiveColors(tabsId)
-    }
 
     return (
         <Dialog open={isOpen} onOpenChange={handleOpenChange}>
@@ -73,7 +65,7 @@ const AddTagModal = () => {
 
                         <InfoBlock label={'Цвет'} error={formState.errors.color?.message}>
                             <div className={s.tagListWrapper}>
-                                <CheckboxList tabs={colors} mode={'one'} setActiveTabs={handleSetActiveTab} activeTabs={activeColors}/>
+                                <ColorList/>
                             </div>
                         </InfoBlock>
 

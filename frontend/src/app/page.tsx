@@ -4,7 +4,7 @@ import React, {ChangeEvent, use, useState} from 'react';
 import s from './root-layout.module.css'
 import CreateTaskInput from "@/components/shared/CreateTaskInput/CreateTaskInput";
 import InfoBlock from "@/components/shared/InfoBlock/InfoBlock";
-import CreateTask from "@/widgets/CreateTaskForm/CreateTaskForm/CreateTask";
+import CreateTask from "@/widgets/CreateTaskForm/CreateTask";
 import AnimateImage from "@/components/shared/AnimateImage/AnimateImage";
 import {cn} from "@/lib/utils";
 import CreateTaskContext from "@/context/CreateTask/CreateTaskContext";
@@ -62,9 +62,9 @@ const MainPage = () => {
                             )}
                         </AnimatePresence>
                     </div>
-                    <form className={s.createTaskWrapper} onSubmit={handleSubmit(onSubmit)}>
+                    <form className={s.createTaskWrapper} onSubmit={ handleSubmit(onSubmit)}>
                         <InfoBlock error={formState.errors.title?.message}>
-                            <CreateTaskInput {...register('title')} onChange={handleReplace}/>
+                            <CreateTaskInput {...register('title')} onChange={ handleReplace}/>
                         </InfoBlock>
 
                         <AnimatePresence mode="wait">

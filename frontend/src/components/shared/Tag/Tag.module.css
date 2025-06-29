@@ -1,44 +1,27 @@
-.tagWrapper {
+.container{
     display: flex;
     flex-wrap: nowrap;
+    width: 100%;
+    height: 100%;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    border-radius: 15px;
-    width: fit-content;
-    height: 42px;
-    padding: 15px;
-    transition: .3s;
-    cursor: pointer;
-    font-weight: 600;
+    gap: 10px;
 }
 
-.checkbox{
-    background-color: transparent;
-    border: none;
+.btnContainer{
+    height: 100%;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
 }
 
-.disabled {
-    cursor: default;
+.deleteBtn{
+    opacity: .1;
+    transition: opacity 0.3s;
 }
 
-@keyframes loading {
-    0% { opacity: .2; }
-    100% { opacity: .8; }
-}
-
-.loading{
-    background-color: var(--secondary) !important;
-    animation: loading .5s ease-in-out infinite alternate;
-}
-
-.error{
-    background-color: var(--destructive) !important;
-}
-
-.refetch{
-    color: #ff4647 !important;
-    cursor: pointer;
-    height: 20px;
-    stroke-width: 2pt;
+.deleteBtn:hover {
+    opacity: 1;
 }

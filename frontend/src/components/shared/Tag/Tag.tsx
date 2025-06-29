@@ -1,54 +1,42 @@
 import React from 'react';
-import s from "./Tag.module.css"
-import {Checkbox} from "@/components/ui/checkbox";
-import { TTag} from "@/mocks/tags";
-import {colorRecord} from "@/mocks/colors";
-import { cn } from '@/lib/utils';
-import {RotateCcw} from "lucide-react";
-import {useUser} from "@/hooks/useUser";
+import s from './Tag.module.css'
+import SharedCheckbox, {ISharedCheckboxProps} from "@/components/shared/SharedCheckbox/SharedCheckbox";
+import SquareButton from "@/components/shared/SquareButton/SquareButton";
+import {RotateCcw, Trash2} from "lucide-react";
 
-interface IProps extends TTag {
-    isActive: boolean;
-    onCheckedChange: (tabId: number, state: boolean) => void;
+interface ICheckboxProps extends ISharedCheckboxProps {
+    value: string;
 }
 
-const Tag = ({id, isLoading, isError, value, color, isActive, onCheckedChange}: IProps) => {
-    const user = useUser()
+interface ITagProps {
+    checkboxProps: ICheckboxProps,
+    onRetry: (id: string) => void;
+    onDelete: (id: string) => void;
+}
 
-    const tagStyles =
-        isActive
-            ? {backgroundColor: colorRecord[color]}
-            : {backgroundColor: 'var(--card-foreground)'};
-
-    const checkboxStyles =
-        isActive
-            ? {backgroundColor: 'white', color: colorRecord[color]}
-            : {backgroundColor: colorRecord[color]};
-
+const Tag = ({checkboxProps, onRetry, onDelete}: ITagProps) => {
     return (
-        <label
-            htmlFor={id}
-            style={tagStyles}
-            className={cn(
-                s.tagWrapper,
-                isLoading && [s.loading, s.disabled],
-                isError && [s.error, s.disabled]
-            )}
-        >
-            <Checkbox
-                disabled={isLoading || isError}
-                id={id}
-                checked={isActive}
-                onCheckedChange={st => onCheckedChange(id, !!st) }
-                style={checkboxStyles}
-                className={s.checkbox}
-            />
-                {
-                    value
-                }
+        <SharedCheckbox {...checkboxProps} >
+            <div className={s.container}>
+                <span>{checkboxProps.value}</span>
 
-            {isError && <RotateCcw className={s.refetch} onClick={() => user?.retryAddTag(id)}/>}
-        </label>
+                <div className={s.btnContainer}>
+                    <SquareButton
+                        className={s.deleteBtn}
+                        onClick={() => onDelete(checkboxProps.id)}
+                        icon={<Trash2/>}
+                        variant={checkboxProps.isError ? 'destructive' : 'secondary'}
+                    />
+                    {checkboxProps.isError &&
+                        <SquareButton
+                            onClick={() => onRetry(checkboxProps.id)}
+                            icon={<RotateCcw />}
+                            variant="destructive"/>
+                    }
+                </div>
+            </div>
+
+        </SharedCheckbox>
     );
 };
 
