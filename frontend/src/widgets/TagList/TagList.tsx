@@ -1,5 +1,5 @@
 'use client'
-import React, {use, useState} from 'react';
+import React, {use, useContext, useState} from 'react';
 import s from './TagList.module.css'
 import AddTagButton from "@/components/shared/AddTagButton/AddTagButton";
 import {Plus} from 'lucide-react';
@@ -13,7 +13,7 @@ const TagList = () => {
     const [activeTabs, setActiveTabs] = useState<string[]>([])
 
     const modal = use(ModalsContext)
-    const createTasks = use(CreateTaskContext);
+    const createTasks = useContext(CreateTaskContext);
     const user = useUser()
 
     if (!createTasks || !user) return
@@ -26,7 +26,6 @@ const TagList = () => {
 
     // множественный выбор
     const onCheckedChange = (tabId: string, state: boolean) => {
-        console.log(tabId, state);
         const newTabs =
             state ? [...activeTabs, tabId] : activeTabs.filter(tab => tab !== tabId);
 

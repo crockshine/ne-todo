@@ -8,6 +8,8 @@ interface IInfoBlockProps {
 }
 
 const InfoBlock = ({label, error, children}: IInfoBlockProps) => {
+    console.log('InfoBlock' ,label);
+
     return (
         <div className={s.wrapper}>
             {label && <p>{label}</p>}

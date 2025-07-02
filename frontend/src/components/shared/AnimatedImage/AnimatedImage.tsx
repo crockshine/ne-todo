@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './AnimateImage.module.css'
+import s from './AnimatedImage.module.css'
 import {motion} from "framer-motion";
 import {cn} from "@/lib/utils";
 
@@ -8,7 +8,7 @@ interface IAnimateImageProps {
     delay: number;
 }
 
-const AnimateImage = ({iconName, delay} :IAnimateImageProps) => {
+const AnimatedImage = ({iconName, delay} :IAnimateImageProps) => {
     return (
         <motion.div
             className={cn(s.icon, s[iconName])}
@@ -42,4 +42,4 @@ const AnimateImage = ({iconName, delay} :IAnimateImageProps) => {
     );
 };
 
-export default AnimateImage;
+export default AnimatedImage;

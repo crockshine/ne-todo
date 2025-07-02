@@ -1,4 +1,3 @@
-import axios from "@/lib/axios"
 import { IColor } from "@/types/color.interface"
 
 // Мемоизированная версия

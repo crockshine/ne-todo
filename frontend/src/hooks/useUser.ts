@@ -1,4 +1,4 @@
-import {TagsContext} from "@/context/User/TagsContext";
+import {TagsContext} from "@/context/UserStore/TagsContext";
 import {use} from "react";
 
 export const useUser = () => {

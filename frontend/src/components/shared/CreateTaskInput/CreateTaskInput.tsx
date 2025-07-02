@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import s from './CreateTaskInput.module.css'
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
@@ -23,4 +23,4 @@ const CreateTaskInput = ({...props }: React.InputHTMLAttributes<HTMLInputElement
     );
 };
 
-export default CreateTaskInput;
+export default memo(CreateTaskInput);

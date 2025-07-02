@@ -3,6 +3,7 @@ import s from './Tag.module.css'
 import SharedCheckbox, {ISharedCheckboxProps} from "@/components/shared/SharedCheckbox/SharedCheckbox";
 import SquareButton from "@/components/shared/SquareButton/SquareButton";
 import {RotateCcw, Trash2} from "lucide-react";
+import {cn} from "@/lib/utils";
 
 interface ICheckboxProps extends ISharedCheckboxProps {
     value: string;
@@ -22,7 +23,7 @@ const Tag = ({checkboxProps, onRetry, onDelete}: ITagProps) => {
 
                 <div className={s.btnContainer}>
                     <SquareButton
-                        className={s.deleteBtn}
+                        className={cn(!checkboxProps.isError && s.deleteBtn)}
                         onClick={() => onDelete(checkboxProps.id)}
                         icon={<Trash2/>}
                         variant={checkboxProps.isError ? 'destructive' : 'secondary'}
