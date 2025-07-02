@@ -5,40 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72ba26b1-aefd-43f9-b701-a60f2548bed0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/api/colors.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/shared/SharedCheckbox/SharedCheckbox.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/shared/SharedCheckbox/SharedCheckbox.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/shared/SquareButton/SquareButton.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/shared/SquareButton/SquareButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/types/checkbox.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/widgets/ColorList/ColorList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/widgets/TagList/TagList.tsx" afterDir="false" />
+<<<<<<< Updated upstream
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/page.tsx" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/Docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/shared/AnimatedLogo/AnimatedLogo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/shared/AnimatedLogo/AnmatedLogo.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/context/UserStore/UserContext.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/hooks/useCreateTask.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.eslintrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/bun.lock" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/bun.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/api/tags.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/tags.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/api/tasks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/tasks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/api/colors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/colors.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/root-layout.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/root-layout.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/shared/AnimateImage/AnimateImage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/shared/AnimatedImage/AnimatedImage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/shared/AnimateImage/AnimateImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/shared/AnimatedImage/AnimatedImage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/shared/CreateTaskInput/CreateTaskInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/shared/CreateTaskInput/CreateTaskInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/shared/IconButton/IconButton.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/shared/AddTagButton/AddTagButton.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/shared/IconButton/IconButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/shared/AddTagButton/AddTagButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/shared/Tag/Tag.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/shared/Tag/Tag.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/shared/InfoBlock/InfoBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/shared/InfoBlock/InfoBlock.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/shared/Tag/Tag.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/shared/Tag/Tag.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/context/User/TagsContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/context/User/TagsContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/context/User/UserContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/context/User/UserContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/mocks/colors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/mocks/colors.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/mocks/tags.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/types/color.interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/modals/AddTagModal/AddTagModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/modals/AddTagModal/AddTagModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/validations/add-tag.validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/validations/add-tag.validation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/validations/add-task.validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/validations/add-task.validation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/widgets/CheckboxList/CheckboxList.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/widgets/CreateTaskForm/CreateTaskForm/CreateTask.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/widgets/CreateTaskForm/CreateTask.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/widgets/CreateTaskForm/CreateTaskForm/CreateTask.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/widgets/CreateTaskForm/CreateTask.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/widgets/CreateTaskForm/TagList/TagList.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/widgets/TagList/TagList.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/widgets/CreateTaskForm/TagList/TagList.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/context/CreateTask/CreateTaskContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/context/CreateTask/CreateTaskContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/context/User/TagsContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/context/UserStore/TagsContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/context/User/UserContext.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/useUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/hooks/useUser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/mocks/colors.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/widgets/CreateTaskForm/CreateTask.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/widgets/CreateTaskForm/CreateTask.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/widgets/TagList/TagList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/widgets/TagList/TagList.tsx" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +44,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Dockerfile" />
         <option value="TypeScript JSX File" />
         <option value="CSS File" />
         <option value="TypeScript File" />
@@ -167,7 +164,8 @@
       <workItem from="1751096880307" duration="11354000" />
       <workItem from="1751143044709" duration="5207000" />
       <workItem from="1751180605726" duration="12477000" />
-      <workItem from="1751215277570" duration="996000" />
+      <workItem from="1751215277570" duration="4369000" />
+      <workItem from="1751351695231" duration="8701000" />
     </task>
     <servers />
   </component>
