@@ -16,22 +16,35 @@ export const getAllTags = async (): Promise<ITag[] | null> => {
 }
 
 // создать тег
-
 export const createTag = async (tag: ITag): Promise<ITag | null>  => {
     try {
-        // const {data} = await axios.post("/tags", tag)
-        // return data
-        const t = Math.random()
+        const result = await new Promise<ITag>((resolve, reject) => {
+            setTimeout(() => {
+                const t = Math.random();
+                if (t < 0.5) {
+                    resolve({ ...tag, id: new Date().toString() });
+                } else {
+                    reject(new Error("Mocked error: failed to create tag"));
+                }
+            }, 1000);
+        });
 
-        if (t < 0.5){
-            return new Promise(res => setTimeout(() => res({...tag, id: Date.now().toString()}), 2000))
-        } else{
-            throw new Error("There is already a tag")
-        }
+        return result;
     } catch (error) {
-        if (error instanceof AxiosError) {
-            console.log(error.response?.data?.message);
-        }
-        return null
+        console.error(error);
+        return null;
+    }
+}
+
+// удалить тэг
+export const deleteTag = async (id: string): Promise<string | null>  => {
+    try {
+       // бла бла
+        return new Promise((res) => {
+            setTimeout(() => res(id), 1000)
+        })
+    } catch (error) {
+        console.error(error);
+        return null;
     }
 }

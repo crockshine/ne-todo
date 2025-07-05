@@ -1,6 +1,6 @@
 "use client"
 import s from './AddTagModal.module.css'
-import React, {startTransition,  use, } from 'react';
+import React from 'react';
 import { Button } from "@/components/ui/button"
 import {
     Dialog,
@@ -13,43 +13,38 @@ import {
 import InfoBlock from "@/components/shared/InfoBlock/InfoBlock";
 import {Input} from "@/components/ui/input";
 import ColorList from "@/widgets/ColorList/ColorList";
-import ModalsContext from "@/context/Modal/ModalContext";
-import {useUser} from "@/hooks/useUser";
 import {AddTagFormData} from "@/validations/add-tag.validation";
 import {ITag} from "@/types/checkbox.interface";
+import {useModal} from "@/hooks/useModal";
+import {useOptimisticTags} from "@/hooks/useOptimisticTags";
+
 
 const AddTagModal = () => {
-    const modal = use(ModalsContext)
-    const isOpen = modal?.isOpen('addTag')
+    const {isOpen, onClose, closeAll} = useModal()
+    const isOpened = isOpen('addTag')
 
-    const user = useUser()
-    if (!user) return
-    const {handleSubmit, addOptimisticTags, register, formState, reset} = user
+    const {optCreateTag, formState,reset,handleSubmit, register} = useOptimisticTags()
 
 
     const handleOpenChange = (state: boolean) => {
-        modal?.onClose(state)
-        if (!state) resetForm()
+        onClose(state)
+        if (!state) reset()
     }
 
-    const resetForm = () => {
-        reset()
-    }
-
-    const addTag = ({title, color}: AddTagFormData) => {
+    const addTag =  ({title, color}: AddTagFormData) => {
         const newTag: ITag = {
             id: new Date().toString(),
             value: title.trim().toLowerCase(),
             color: color,
         }
-        startTransition(async ()=> await addOptimisticTags(newTag))
-        modal?.closeAll()
-        resetForm()
+        optCreateTag(newTag)
+        closeAll()
+        reset()
     }
 
 
     return (
-        <Dialog open={isOpen} onOpenChange={handleOpenChange}>
+        <Dialog open={isOpened} onOpenChange={handleOpenChange}>
                 <DialogContent>
                     <DialogHeader>
                         <DialogTitle>Добавить тэг</DialogTitle>

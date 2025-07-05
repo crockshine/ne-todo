@@ -12,13 +12,13 @@ import OptionalFields from "@/widgets/OptionalFields/OptionalField";
 
 const Page = () => {
     const [isCreating, setIsCreating] = useState(false);
-    const { handleSubmit, onSubmit, control } = useCreateTask();
+    const {submitCreateTask, control} = useCreateTask();
 
     const title = useWatch({ name: "title", control});
 
     useEffect(() => {
-        if (title?.trim() && !isCreating) setIsCreating(true);
-    }, [title, isCreating]);
+        if (title?.trim()) setIsCreating(true);
+    }, [title]);
 
     return (
         <>
@@ -30,7 +30,7 @@ const Page = () => {
             >
                 <AnimatedLogo isCreating={isCreating} setIsCreating={setIsCreating} />
 
-                <form className={s.createTaskWrapper} onSubmit={handleSubmit(onSubmit)}>
+                <form className={s.createTaskWrapper} onSubmit={submitCreateTask}>
                     <TitleField />
                     <AnimatePresence mode="wait">
                         {isCreating && <OptionalFields />}

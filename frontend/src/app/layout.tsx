@@ -1,13 +1,14 @@
 import type {Metadata} from "next";
 import {Inter} from "next/font/google";
 import "@/styles/globals.css";
-import {ModalsProvider} from "@/context/Modal/ModalContext";
+import {ModalsProvider} from "@/context/ModalContext";
 import Modals from "@/modals";
 import GradientLayout from "@/layouts/GradientLayout";
 import React from "react";
-import {CreateTaskProvider} from "@/context/CreateTask/CreateTaskContext";
+import {CreateTaskProvider} from "@/context/CreateTaskContext";
 // import {UserProvider} from "@/context/UserStore/UserContext";
 import {TagsProvider} from "@/context/UserStore/TagsContext";
+import {OptimisticTagsProvider} from "@/context/OptimisticTagsContext";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -29,13 +30,11 @@ export default function RootLayout({
         <body className={`${inter.variable} font-sans antialiased`}>
         <ModalsProvider>
             <CreateTaskProvider>
-                {/*<UserProvider>*/}
-                <TagsProvider>
+                <OptimisticTagsProvider>
                     {children}
                     <GradientLayout/>
                     <Modals/>
-                </TagsProvider>
-                {/*</UserProvider>*/}
+                </OptimisticTagsProvider>
             </CreateTaskProvider>
         </ModalsProvider>
         </body>

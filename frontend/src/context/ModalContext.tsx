@@ -5,7 +5,7 @@ export type ModalsList =
     "none"
     | "addTag"
 
-interface ModalsProviderType {
+interface IModalContext {
     currentModal: ModalsList;
     switchModal: (modal: ModalsList) => void;
     closeAll: () => void;
@@ -13,7 +13,7 @@ interface ModalsProviderType {
     onClose: (opened: boolean) => void;
 }
 
-const ModalsContext = createContext<ModalsProviderType | undefined>(undefined);
+const ModalsContext = createContext<IModalContext | undefined>(undefined);
 
 interface ModalsProviderProps {
     children: ReactNode;
@@ -39,9 +39,9 @@ export const ModalsProvider = ({children}: ModalsProviderProps) => {
     }
 
     return (
-        <ModalsContext.Provider value={{onClose, isOpen, currentModal, switchModal, closeAll}}>
+        <ModalsContext value={{onClose, isOpen, currentModal, switchModal, closeAll}}>
             {children}
-        </ModalsContext.Provider>
+        </ModalsContext>
     );
 };
 

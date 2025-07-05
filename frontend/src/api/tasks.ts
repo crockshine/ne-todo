@@ -10,7 +10,7 @@ export interface ICreateTaskRequest {
 
 // создать
 export const createTask = async (data: ICreateTaskRequest) => {
-    console.log(data);
+    // console.log(data);
     try {
         await axios.post("/tasks", {...data})
     } catch (error) {

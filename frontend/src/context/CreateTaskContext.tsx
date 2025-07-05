@@ -1,11 +1,10 @@
 "use client";
 import { TaskFormData, taskSchema } from '@/validations/add-task.validation';
-import React, { createContext, ReactNode, useCallback } from 'react';
+import React, {createContext, ReactNode} from 'react';
 import {
     useForm,
     UseFormRegister,
     UseFormHandleSubmit,
-    UseFormWatch,
     UseFormSetValue,
     FieldErrors,  Control
 } from "react-hook-form";
@@ -14,11 +13,10 @@ import { combineDate } from "@/helpers/combineDate";
 import { createTask } from "@/api/tasks";
 
 interface ICreateTaskContext {
-    onSubmit: (data: TaskFormData) => Promise<void>;
+    submitCreateTask:  (e?: React.BaseSyntheticEvent) => Promise<void>;
     register: UseFormRegister<TaskFormData>;
     handleSubmit: UseFormHandleSubmit<TaskFormData>;
     setValue: UseFormSetValue<TaskFormData>;
-    watch: UseFormWatch<TaskFormData>;
     formState: { errors: FieldErrors<TaskFormData> };
     control: Control<TaskFormData>
 }
@@ -30,20 +28,20 @@ interface CreateTaskProviderProps {
 }
 
 export const CreateTaskProvider = ({ children }: CreateTaskProviderProps) => {
-    const methods = useForm<TaskFormData>({
+    const { register, handleSubmit, setValue,  formState, control } = useForm<TaskFormData>({
         resolver: zodResolver(taskSchema),
         mode: "all",
     });
 
-    const { register, handleSubmit, setValue, watch, formState, control } = methods;
-
-    const onSubmit = useCallback(async ({ day, time, tagsId, title }: TaskFormData) => {
+    const _onSubmit = async ({ day, time, tagsId, title }: TaskFormData) => {
         const deadline = day && time ? combineDate(day, time) : day;
         await createTask({ title, tagsId, deadline });
-    }, []);
+    };
+
+    const submitCreateTask = handleSubmit(_onSubmit);
 
     return (
-        <CreateTaskContext value={{onSubmit, register, handleSubmit, setValue, watch, formState, control}}>
+        <CreateTaskContext value={{submitCreateTask, register, handleSubmit, setValue, formState, control}}>
                 {children}
         </CreateTaskContext>
     );
