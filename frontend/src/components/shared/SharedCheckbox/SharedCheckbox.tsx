@@ -2,31 +2,31 @@ import React from 'react';
 import s from './SharedCheckbox.module.css'
 import {Checkbox} from "@/components/ui/checkbox";
 import {cn} from '@/lib/utils';
+import {IUITag} from "@/types/checkbox.interface";
+import {colorMap} from "@/mocks/colorMap";
+import {TColor} from "@/types/color.interface";
 
-export interface ISharedCheckboxProps {
-    id: string;
-    color: string; // hex
+export interface ISharedCheckboxProps extends Omit<IUITag, 'value'> {
     isActive: boolean;
-    onCheckedChange: (tabId: string, state: boolean) => void;
+    onCheckedChange: (tabId: TColor, state: boolean) => void;
 
     children?: React.ReactNode;
     className?: string;
-
-    isLoading?: boolean;
-    isError?: boolean;
 }
 
 const SharedCheckbox = (
     {id, isLoading, isError,  color, isActive,className, onCheckedChange, children}: ISharedCheckboxProps) => {
+    const clr = colorMap[color];
+
     const tagStyles =
         isActive
-            ? {backgroundColor: color}
+            ? {backgroundColor: clr}
             : {backgroundColor: 'var(--card-foreground)'};
 
     const checkboxStyles =
         isActive
-            ? {backgroundColor: 'var(--card-foreground)', color: color}
-            : {backgroundColor: color};
+            ? {backgroundColor: 'var(--card-foreground)', color: clr}
+            : {backgroundColor: clr};
 
 
     return (
@@ -44,7 +44,7 @@ const SharedCheckbox = (
                 disabled={isLoading || isError}
                 id={id}
                 checked={isActive}
-                onCheckedChange={st => onCheckedChange(id, !!st)}
+                onCheckedChange={st => onCheckedChange(color, !!st)}
                 style={checkboxStyles}
                 className={s.checkbox}
             />

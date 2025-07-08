@@ -60,7 +60,7 @@ export const OptimisticTagsProvider = observer(({children}: OptimisticTagsProvid
                 setOptimisticTags({
                     id: badTag.id,
                     value: badTag.value,
-                    color: badTag.color
+                    color: badTag.color,
                 })
                 await retryAddTag(badTag)
             })

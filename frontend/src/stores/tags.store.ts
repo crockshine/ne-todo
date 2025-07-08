@@ -25,9 +25,10 @@ class TagsStore {
         }
     })
 
+
     public createTag = action(async (tag: ITag) => {
         try {
-            const res = await createTag(tag)
+            const res = await createTag({color: tag.color, value: tag.value})
             if (res) {
                 this._tags.push(res)
             } else {

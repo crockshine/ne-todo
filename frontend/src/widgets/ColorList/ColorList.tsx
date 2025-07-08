@@ -2,14 +2,14 @@
 import React, {useState} from 'react';
 import SharedCheckbox from "@/components/shared/SharedCheckbox/SharedCheckbox";
 import {getAllColors} from "@/api/colors";
-import {IColor} from "@/types/color.interface";
+import {IColor, TColor} from "@/types/color.interface";
 import {useAsync} from "react-use";
 import {useOptimisticTags} from "@/hooks/useOptimisticTags";
 
 
 const ColorList = () => {
     const [colors, setColors] = useState<IColor[]>([]);
-    const [activeTab, setActiveTab] = useState<string | null>(null)
+    const [activeTab, setActiveTab] = useState<TColor | null>(null)
 
     const {setValue} = useOptimisticTags()
 
@@ -21,7 +21,7 @@ const ColorList = () => {
     }, [])
 
 
-    const handleSetActiveTab = (tabsId: string) => {
+    const handleSetActiveTab = (tabsId: TColor) => {
         setValue('color', tabsId)
         setActiveTab(tabsId)
     }
@@ -30,10 +30,10 @@ const ColorList = () => {
                 colors?.map(tab =>
                     <SharedCheckbox
                         key={tab.id}
-                        id={tab.color}
+                        id={tab.id}
                         color={tab.color}
                         isActive={activeTab === tab.color}
-                        onCheckedChange={(id) => handleSetActiveTab(id)}
+                        onCheckedChange={(color) => handleSetActiveTab(color)}
                     />
                 )
     );

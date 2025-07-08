@@ -6,8 +6,6 @@ import Modals from "@/modals";
 import GradientLayout from "@/layouts/GradientLayout";
 import React from "react";
 import {CreateTaskProvider} from "@/context/CreateTaskContext";
-// import {UserProvider} from "@/context/UserStore/UserContext";
-import {TagsProvider} from "@/context/UserStore/TagsContext";
 import {OptimisticTagsProvider} from "@/context/OptimisticTagsContext";
 
 const inter = Inter({

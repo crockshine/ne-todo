@@ -7,7 +7,7 @@ export const addTagSchema = (tags: ITag[]) =>
             .trim()
             .min(1, 'название не может быть пустым')
             .max(10, 'название не может быть длиннее 10 символов'),
-        color: z.string({message: 'укажите цвет'})
+        color: z.enum(['RED','BLUE','GREEN','ORANGE','PINK'], {message: 'укажите цвет'})
 
     }).superRefine((data, ctx) => {
         if (!tags) return;

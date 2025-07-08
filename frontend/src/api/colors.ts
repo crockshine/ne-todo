@@ -15,9 +15,9 @@ export const getAllColors = async (): Promise<IColor[]> => {
             // Mock данные
             setTimeout(() => {
                 resolve([
-                    { id: "1", color: "#FF0000" },
-                    { id: "2", color: "#00FF00" },
-                    { id: "3", color: "#0000FF" }
+                    { id: '1', color: "RED" },
+                    { id: '2', color: "GREEN" },
+                    { id: '3', color: "BLUE" }
                 ])
             }, 1000)
         } catch (error) {

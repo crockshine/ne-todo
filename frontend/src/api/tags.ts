@@ -16,20 +16,10 @@ export const getAllTags = async (): Promise<ITag[] | null> => {
 }
 
 // создать тег
-export const createTag = async (tag: ITag): Promise<ITag | null>  => {
+export const createTag = async (tag: Omit<ITag, 'id'>): Promise<ITag | null>  => {
+    console.log(tag);
     try {
-        const result = await new Promise<ITag>((resolve, reject) => {
-            setTimeout(() => {
-                const t = Math.random();
-                if (t < 0.5) {
-                    resolve({ ...tag, id: new Date().toString() });
-                } else {
-                    reject(new Error("Mocked error: failed to create tag"));
-                }
-            }, 1000);
-        });
-
-        return result;
+        return await axios.post(`/tags`, tag);
     } catch (error) {
         console.error(error);
         return null;

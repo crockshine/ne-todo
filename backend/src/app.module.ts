@@ -1,8 +1,10 @@
 import { Module } from '@nestjs/common';
-import { TaskModule } from './task/task.module';
+import { TasksModule } from './tasks/tasks.module';
+import { PrismaModule } from './prisma/prisma.module';
+import { TagsModule } from './tags/tags.module';
 
 @Module({
-  imports: [TaskModule],
+  imports: [TasksModule, PrismaModule, TagsModule],
   controllers: [],
   providers: [],
 })

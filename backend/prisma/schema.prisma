@@ -1,0 +1,45 @@
+// создает клиенское апи
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URI")
+}
+
+model User {
+  id      String @id @default(uuid())
+  email   String
+  tasksId Task[]
+  tagsId  Tag[]
+}
+
+model Task {
+  id    String   @id @default(uuid())
+  title String
+  date  DateTime
+  tags  Tag[] // у каждой задачи - много тегов
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade) // у каждой задачи - один юзер
+  userId String
+}
+
+model Tag {
+  id    String @id @default(uuid())
+  value String @unique
+  tasks Task[]
+
+  color EColor @unique
+
+  user   User   @relation(fields: [userId], references: [id]) // у каждого тега - один юзер
+  userId String
+}
+
+enum EColor {
+  RED
+  BLUE
+  GREEN
+  ORANGE
+  PINK
+}
