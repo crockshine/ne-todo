@@ -19,7 +19,7 @@ interface IOptimisticTagsContext {
     optimisticTags: IUITag[];
     optCreateTag: (newTag: ITag) => void
     optRetryAddTag: (id: string) => void;
-    optDeleteTag: (id: string) => void;
+    optDeleteTag: (id: string, isError?: boolean) => void;
 
     register: UseFormRegister<AddTagFormData>;
     reset: UseFormReset<AddTagFormData>;
@@ -68,8 +68,8 @@ export const OptimisticTagsProvider = observer(({children}: OptimisticTagsProvid
     }
 
     // оптимистично удалить тег
-    const optDeleteTag = async (id: string) => {
-            await deleteTag(id)
+    const optDeleteTag = async (id: string, isError?: boolean) => {
+        await deleteTag(id, isError)
     }
 
     // работа с формой

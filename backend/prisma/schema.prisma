@@ -30,7 +30,7 @@ model Tag {
   value String @unique
   tasks Task[]
 
-  color EColor @unique
+  color EColor
 
   user   User   @relation(fields: [userId], references: [id]) // у каждого тега - один юзер
   userId String

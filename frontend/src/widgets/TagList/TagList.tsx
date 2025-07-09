@@ -54,7 +54,7 @@ const TagList = () => {
                             onCheckedChange,
                         }}
                         onRetry={id => optRetryAddTag(id)}
-                        onDelete={id => optDeleteTag(id)}
+                        onDelete={(id, isError) => optDeleteTag(id, isError)}
                     />
                 )
             }

@@ -12,7 +12,7 @@ interface ICheckboxProps extends ISharedCheckboxProps {
 interface ITagProps {
     checkboxProps: ICheckboxProps,
     onRetry: (id: string) => void;
-    onDelete: (id: string) => void;
+    onDelete: (id: string, isError?: boolean) => void;
 }
 
 const Tag = ({checkboxProps, onRetry, onDelete}: ITagProps) => {
@@ -24,7 +24,7 @@ const Tag = ({checkboxProps, onRetry, onDelete}: ITagProps) => {
                 <div className={s.btnContainer}>
                     <SquareButton
                         className={cn(!checkboxProps.isError && s.deleteBtn)}
-                        onClick={() => onDelete(checkboxProps.id)}
+                        onClick={() => onDelete(checkboxProps.id, checkboxProps.isError)}
                         icon={<Trash2/>}
                         variant={checkboxProps.isError ? 'destructive' : 'secondary'}
                     />

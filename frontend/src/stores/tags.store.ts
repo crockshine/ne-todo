@@ -49,16 +49,18 @@ class TagsStore {
         })
     })
 
-    public deleteTag = action(async (id: string) => {
+    public deleteTag = action(async (id: string, isError?: boolean) => {
         const _t = [...this._tags]
+
         // оптимистичное удаление
         this._tags = this._tags.filter(t => t.id !== id)
 
-        // если не получилось удалить
+        if (isError) return
+
         const deletedId = await deleteTag(id)
-        if (!deletedId) {
-            this._tags = [..._t]
-        }
+        // если не получилось удалить
+        if (!deletedId) this._tags = [..._t]
+
     })
 
 }

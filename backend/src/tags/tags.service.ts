@@ -1,31 +1,56 @@
-import { Injectable } from "@nestjs/common";
+import { HttpException, Injectable, NotFoundException } from "@nestjs/common";
 import { CreateTagDto } from "./dto/create-tag.dto";
 import { PrismaService } from "../prisma/prisma.service";
+import { Tag } from "./entities/tag";
 
 @Injectable()
 export class TagsService {
   constructor(private readonly prismaService: PrismaService) {}
 
-  async create(createTagDto: CreateTagDto) {
+  async create(createTagDto: CreateTagDto): Promise<Tag> {
     try {
-      await this.prismaService.tag.create({
+
+      return await this.prismaService.tag.create({
         data: {
           ...createTagDto,
-          userId: 1
+          userId: "2",
+        },
+        omit: {
+          userId: true
         }
       });
-      return createTagDto;
     } catch (error) {
-      return error;
+      console.log(error);
+      throw error;
     }
-
   }
 
-  findAll() {
-    return this.prismaService.tag.findMany();
+  async findAll(): Promise<Tag[]> {
+    try {
+      return await this.prismaService.tag.findMany({
+        omit: {
+          userId: true
+        }
+      });
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} tag`;
+  async remove(id: string): Promise<{ id: string }> {
+    try {
+      return await this.prismaService.tag.delete({
+        where: {
+          id: id
+        },
+        select: {
+          id: true
+        }
+      })
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
   }
 }

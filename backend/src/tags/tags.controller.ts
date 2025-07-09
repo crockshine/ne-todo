@@ -1,7 +1,6 @@
 import { Controller, Get, Post, Body,  Param, Delete } from '@nestjs/common';
 import { TagsService } from './tags.service';
 import { CreateTagDto } from './dto/create-tag.dto';
-import {EColor} from '@prisma/client'
 
 @Controller('tags')
 export class TagsController {
@@ -9,7 +8,6 @@ export class TagsController {
 
   @Post()
   create(@Body() createTagDto: CreateTagDto) {
-    console.log(createTagDto);
     return this.tagsService.create(createTagDto);
   }
 
@@ -20,6 +18,6 @@ export class TagsController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.tagsService.remove(+id);
+    return this.tagsService.remove(id);
   }
 }

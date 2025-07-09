@@ -17,9 +17,9 @@ export const getAllTags = async (): Promise<ITag[] | null> => {
 
 // создать тег
 export const createTag = async (tag: Omit<ITag, 'id'>): Promise<ITag | null>  => {
-    console.log(tag);
     try {
-        return await axios.post(`/tags`, tag);
+        const {data} =  await axios.post(`/tags`, tag);
+        return data
     } catch (error) {
         console.error(error);
         return null;
@@ -29,10 +29,8 @@ export const createTag = async (tag: Omit<ITag, 'id'>): Promise<ITag | null>  =>
 // удалить тэг
 export const deleteTag = async (id: string): Promise<string | null>  => {
     try {
-       // бла бла
-        return new Promise((res) => {
-            setTimeout(() => res(id), 1000)
-        })
+        const {data} = await axios.delete<{id: string}>(`/tags/${id}`);
+        return data.id
     } catch (error) {
         console.error(error);
         return null;
