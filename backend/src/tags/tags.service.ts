@@ -38,7 +38,7 @@ export class TagsService {
     }
   }
 
-  async remove(id: string): Promise<{ id: string }> {
+  async delete(id: string): Promise<{ id: string }> {
     try {
       return await this.prismaService.tag.delete({
         where: {

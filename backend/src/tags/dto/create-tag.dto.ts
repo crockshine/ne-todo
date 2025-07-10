@@ -8,7 +8,7 @@ export class CreateTagDto {
   @IsNotEmpty()
   value: string;
 
-  @ApiPropertyOptional({description: 'айди цвета', enum: EColor})
+  @ApiPropertyOptional({enum: EColor, description: 'Цвет'})
   @IsEnum( EColor, { message: 'цвет должен быть енамом' })
   @IsNotEmpty()
   color: EColor;

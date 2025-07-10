@@ -1,5 +1,6 @@
 import { IsArray, IsDate, IsNumber, IsOptional, IsString } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { Type } from "class-transformer";
 
 export class CreateTaskDto {
   @ApiProperty({
@@ -15,12 +16,13 @@ export class CreateTaskDto {
   @IsOptional()
   @IsArray({ message: 'Теги должны быть массивом' })
   @IsNumber({}, { each: true, message: 'ID должны быть числами' })
-  tagsId?: number[];
+  tagsId?: string[];
 
   @ApiPropertyOptional({
     description: 'Дедлайн задачи',
   })
   @IsOptional()
   @IsDate({ message: 'Дедлайн должен быть датой' })
-  deadline?: Date;
+  @Type(() => Date)
+  deadline?: Date | null;
 }

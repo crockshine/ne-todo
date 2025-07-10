@@ -30,10 +30,10 @@ const ColorList = () => {
                 colors?.map(tab =>
                     <SharedCheckbox
                         key={tab.id}
-                        id={tab.id}
+                        id={tab.color}
                         color={tab.color}
                         isActive={activeTab === tab.color}
-                        onCheckedChange={(color) => handleSetActiveTab(color)}
+                        onCheckedChange={(color ) => handleSetActiveTab(color as TColor)}
                     />
                 )
     );

@@ -1,5 +1,5 @@
 import userStore, {IUserStore} from "@/stores/user.store";
-import {action,  makeAutoObservable} from "mobx";
+import {action, makeAutoObservable, runInAction} from "mobx";
 import {ITag, IUITag} from "@/types/checkbox.interface";
 import {createTag, deleteTag, getAllTags} from "@/api/tags";
 
@@ -14,16 +14,17 @@ class TagsStore {
         return this._tags
     }
 
-    public fetchAllTags = action(async () => {
+    public fetchAllTags = async () => {
         try {
             const res = await getAllTags()
             if (res) {
-                this._tags = res
+                runInAction(() =>  this._tags = res)
+
             }
         } catch (e) {
             console.error(e)
         }
-    })
+    }
 
 
     public createTag = action(async (tag: ITag) => {

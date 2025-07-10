@@ -28,7 +28,7 @@ const TagList = () => {
     const onCheckedChange = (tabId: string, state: boolean) => {
         const newTabs =
             state ? [...activeTabs, tabId] : activeTabs.filter(tab => tab !== tabId);
-
+        console.log(tabId);
         _handleSetActiveTab(newTabs);
     }
 

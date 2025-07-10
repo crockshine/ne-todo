@@ -23,21 +23,21 @@ export class TasksController {
   @Get(':id')
   @ApiOperation({ summary: 'Получить задачу по ID' })
   @ApiParam({ name: 'id', type: Number, description: 'ID задачи' })
-  findOne(@Param('id') id: number) {
+  findOne(@Param('id') id: string) {
     return this.tasksService.findOne(id);
   }
 
   @Patch(':id')
   @ApiOperation({ summary: 'Обновить задачу' })
   @ApiParam({ name: 'id', type: Number, description: 'ID задачи' })
-  update(@Param('id') id: number, @Body() task: UpdateTaskDto) {
+  update(@Param('id') id: string, @Body() task: UpdateTaskDto) {
     return this.tasksService.update(id, task);
   }
 
   @Delete(':id')
   @ApiOperation({ summary: 'Удалить задачу' })
   @ApiParam({ name: 'id', type: Number, description: 'ID задачи' })
-  delete(@Param('id') id: number) {
+  delete(@Param('id') id: string) {
     return this.tasksService.delete(id);
   }
 }
