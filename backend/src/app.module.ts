@@ -11,11 +11,10 @@ import { ConfigModule } from "@nestjs/config";
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+
     TasksModule,
     TagsModule,
     AuthModule
-  ],
-  controllers: [],
-  providers: [],
+  ]
 })
 export class AppModule {}
