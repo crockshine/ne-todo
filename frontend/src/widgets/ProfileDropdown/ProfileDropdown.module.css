@@ -1,0 +1,42 @@
+.userInfo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    gap: 10px;
+}
+
+.info{
+    align-items: end;
+    display: flex;
+    flex-direction: column;
+}
+
+.userInfo span:first-child{
+    font-weight: bold;
+    font-size: medium;
+}
+.userInfo span:last-child{
+    font-size: small;
+}
+
+.trigger{
+    padding: 5px 15px;
+    background-color: var(--card);
+    border-radius: 10px;
+    transition: .3s;
+}
+
+.trigger:hover{
+    background-color: var(--card-foreground);
+}
+
+.profileForm{
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+}
+
+.profileForm  small {
+    opacity: .3;
+}

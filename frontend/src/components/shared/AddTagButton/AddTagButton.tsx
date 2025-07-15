@@ -11,7 +11,7 @@ interface IIconButtonProps {
 const AddTagButton = ({icon, label, onClick}: IIconButtonProps) => {
     return (
         <div className={s.wrapper} onClick={onClick}>
-            <SquareButton onClick={()=>{}} icon={icon} variant={'secondary'}/>
+            <SquareButton icon={icon} variant={'secondary'}/>
             <span className={s.label}>
                 {label}
             </span>

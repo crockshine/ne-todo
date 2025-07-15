@@ -1,29 +1,15 @@
 .wrapper{
     display: flex;
     flex-wrap: nowrap;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
+    justify-content: start;
+    gap: 8px;
     border-radius: 15px;
-    width: fit-content;
     height: 42px;
 
     padding: 8px;
     transition: .3s;
     cursor: pointer;
     background-color: var(--card-foreground);
-
-}
-
-.iconBlock{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: calc(15px - 8px);
-    height: 100%;
-    background-color: var(--card);
-
-    aspect-ratio: 1/1;
 }
 
 .label{

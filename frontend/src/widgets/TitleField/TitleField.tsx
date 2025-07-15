@@ -8,7 +8,7 @@ const TitleField = () => {
     const { register, control } = useCreateTask();
     const { errors } = useFormState({ name: ["title"] , control });
     return (
-        <InfoBlock label="Назваsssние" error={errors.title?.message}>
+        <InfoBlock error={errors.title?.message}>
             <CreateTaskInput {...register("title")} />
         </InfoBlock>
     );

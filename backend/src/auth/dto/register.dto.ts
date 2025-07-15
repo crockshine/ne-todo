@@ -1,21 +1,19 @@
-import { IsEmail, IsNotEmpty, IsString, MaxLength, MinLength } from "class-validator";
-import { ApiProperty } from "@nestjs/swagger";
+import {IsEmail, IsNotEmpty, IsString, MinLength} from "class-validator";
+import {ApiProperty} from "@nestjs/swagger";
 
 export class RegisterDto {
-  @ApiProperty({name: 'email', description: 'Почта в формате email', example: 'admin@example.com'})
-  @IsEmail({}, {message: 'Неправильный формат почты'})
-  @IsNotEmpty({message: 'Необходимо ввести почту'})
+  @IsNotEmpty({message: 'emeil not emty'})
+  @ApiProperty({name: 'email'})
+  @IsEmail({}, {message: 'емейл'})
   email: string;
 
-  @ApiProperty({name: 'name', description: 'Имя не больше 15 символов', example: 'crockshine'})
-  @IsString({message: 'Неправильный формат имени'})
-  @IsNotEmpty({message: 'Необходимо ввести имя'})
-  @MaxLength(15, {message: 'Имя слишком большое'})
+  @IsNotEmpty()
+  @IsString()
+  @ApiProperty({name: 'name'})
   name: string;
 
-  @ApiProperty({name: 'password', description: 'Пароль не меньше 6 символов', example: '123456'})
-  @IsString({message: 'Неправильный формат пароля'})
-  @IsNotEmpty({message: 'Необходимо ввести пароль'})
-  @MinLength(6, {message: 'Пароль слишком короткий'})
+  @IsNotEmpty()
+  @MinLength(6, {message: 'Минимум 6 символов'})
+  @ApiProperty({name: 'name'})
   password: string;
 }

@@ -1,159 +1,132 @@
-import {
-  ConflictException,
-  Injectable,
-  NotFoundException,
-  UnauthorizedException,
-} from "@nestjs/common";
-import { PrismaService } from "../prisma/prisma.service";
-import { RegisterDto } from "./dto/register.dto";
+import {ConflictException, Injectable, NotFoundException, UnauthorizedException} from '@nestjs/common';
+import {PrismaService} from "../prisma/prisma.service";
+import {RegisterDto} from "./dto/register.dto";
 import * as bcrypt from "bcrypt";
-import { ConfigService } from "@nestjs/config";
-import { JwtService } from "@nestjs/jwt";
-import { IRegisterResponse } from "./interfaces/register-response.interface";
-import { JwtPayload } from "./interfaces/jwt-payload";
-import { LoginDto } from "./dto/login.dto";
-import { Response } from "express";
-import { Request } from "express";
-import { isHTTPS } from "../utils/isHTTPS";
+import {AuthResponse, Tokens} from "./interfaces/auth.response";
+import {JwtPayload} from "./interfaces/jwt.payload";
+import {JwtService} from "@nestjs/jwt";
+import {ConfigService} from "@nestjs/config";
+import {Response, Request} from "express";
+import {isHTTPS} from "../utils/isHTTPS";
+import {User} from "@prisma/client";
 
 @Injectable()
 export class AuthService {
-  private readonly JWT_ACCESS_TOKEN_TTL: string;
-  private readonly JWT_REFRESH_TOKEN_TTL: string;
-  private readonly COOKIE_HOST: string;
-
   constructor(
     private readonly prismaService: PrismaService,
-    private readonly configService: ConfigService,
     private readonly jwtService: JwtService,
-  ) {
-    this.JWT_ACCESS_TOKEN_TTL = this.configService.getOrThrow<string>(
-      "JWT_ACCESS_TOKEN_TTL",
-    );
-    this.JWT_REFRESH_TOKEN_TTL = this.configService.getOrThrow<string>(
-      "JWT_REFRESH_TOKEN_TTL",
-    );
-    this.COOKIE_HOST = this.configService.getOrThrow<string>("COOKIE_HOST");
-  }
+    private readonly configService: ConfigService,
+  ) {}
 
-  // регистрация юзера
-  async register(res: Response, dto: RegisterDto): Promise<IRegisterResponse> {
-    const { name, email, password } = dto;
-
-    // есть ли юзер с такой почтой
+  // регистрация
+  async register(res: Response, dto: RegisterDto): Promise<AuthResponse> {
+    const {email, password} = dto
     const existUser = await this.prismaService.user.findUnique({
-      where: { email },
-      select: { email: true },
-    });
+      where: {email},
+      select: {email: true}
+    })
 
     if (existUser) {
-      throw new ConflictException("Пользователь с такой почтой существует");
+      throw new ConflictException('Такой пользователь уже существует')
     }
 
-    // хэш пароля
-    const _salt = await bcrypt.genSalt();
-    const hashedPassword = await bcrypt.hash(password, _salt);
+    const _salt =  await bcrypt.genSalt();
+    const pHash = await bcrypt.hash(password, _salt)
 
-    // создаем юзера
     const user = await this.prismaService.user.create({
       data: {
-        name,
-        email,
-        password: hashedPassword,
+        ...dto,
+        password: pHash,
       },
-    });
+      select: {id: true}
+    })
 
-    return this.auth(res, { id: user.id });
+    return this.successAuth(res, {id: user.id})
   }
 
   // вход
-  async login(res: Response, dto: LoginDto): Promise<IRegisterResponse> {
-    const { email, password } = dto;
-
+  async login(res: Response, dto: RegisterDto): Promise<AuthResponse> {
+    const {email, password} = dto
     const user = await this.prismaService.user.findUnique({
-      where: { email },
-      select: { id: true, password: true },
-    });
+      where: {email},
+      select: {id: true, password: true}
+    })
 
     if (!user) {
-      throw new NotFoundException("Пользователь не найден");
+      throw new ConflictException('Пользователь не найден')
     }
 
-    const isValidPassword = await bcrypt.compare(password, user.password);
+    const isVerified = await bcrypt.compare(password, user.password)
 
-    if (!isValidPassword) {
-      throw new NotFoundException("Пользователь не найден");
+    if (!isVerified) {
+      throw new ConflictException('Пользователь не найден')
     }
 
-    return this.auth(res, { id: user.id });
+    return this.successAuth(res, {id: user.id})
   }
 
-  // обновить оба токена по refresh токену
-  async refresh(req: Request, res: Response) {
-    const refreshToken: string = req.cookies["refresh_token"];
-    let payload: JwtPayload;
+  // выход
+  async logout(res: Response): Promise<boolean> {
+    this.applyCookie(res, 'refresh_token', new Date(0))
+    return true
+  }
 
+  // обновление
+  async refresh(res: Response, req: Request): Promise<AuthResponse> {
+    const refreshToken = req.cookies['refresh_token'];
+    if (!refreshToken) {
+      throw new UnauthorizedException('Не дейсвтительный токен')
+    }
+
+    let payload: JwtPayload;
     try {
-      payload = await this.jwtService.verifyAsync(refreshToken);
+      payload = await this.jwtService.verifyAsync(refreshToken)
     } catch (e) {
       console.log(e);
-      throw new UnauthorizedException("Недейсвтительный токен");
+      throw new UnauthorizedException('Не дейсвтительный токен')
     }
+    return this.successAuth(res, payload)
+  }
 
+  // получить юзера по id
+  async getUser(id: string): Promise<User>{
     const user = await this.prismaService.user.findUnique({
-      where: { id: payload.id },
-      select: { id: true },
-    });
-
+      where: { id }
+    })
     if (!user) {
-      await this.logout(res)
-      throw new NotFoundException("Пользователь не найден");
+      throw new NotFoundException('Пользователь не найден')
     }
-
-    return this.auth(res, { id: user.id });
+    return user
   }
 
-  // разлогин
-  async logout(res: Response) {
-    this.setCookie(res, "refresh_token", new Date(0));
-    return true;
+  // успешная аутентификация
+  private successAuth(res: Response, payload: JwtPayload): AuthResponse {
+    const { accessToken, refreshToken } = this.generateTokens({ id: payload.id });
+    this.applyCookie(res, refreshToken, new Date(Date.now() + 1000 * 60 * 60 * 24 * 7))
+    return {accessToken}
   }
 
-  // успешный ответ
-  private auth(res: Response, payload: JwtPayload): IRegisterResponse {
-    const { refreshToken, accessToken } = this.getJwtTokens(payload);
-    this.setCookie(
-      res,
-      refreshToken,
-      new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
-    );
-
-    return { accessToken };
-  }
-
-  // указать в Response refresh куку
-  private setCookie(res: Response, value: string, ttl: Date) {
-    res.cookie("refresh_token", value, {
+  // применить куки
+  private applyCookie(res: Response, data: string, expires: Date) {
+    res.cookie('refresh_token', data, {
       httpOnly: true,
       secure: isHTTPS(this.configService),
-      domain: this.COOKIE_HOST,
-      sameSite: "lax",
-      expires: ttl,
+      sameSite: 'lax',
+      expires,
     });
   }
 
-  // получить два токена
-  private getJwtTokens(payload: JwtPayload) {
+  // токены
+  private generateTokens(payload: JwtPayload): Tokens {
     const accessToken = this.jwtService.sign(payload, {
-      expiresIn: this.JWT_ACCESS_TOKEN_TTL,
-    });
+      expiresIn: this.configService.getOrThrow('JWT_ACCESS_TOKEN_TTL'),
+    })
 
     const refreshToken = this.jwtService.sign(payload, {
-      expiresIn: this.JWT_REFRESH_TOKEN_TTL,
-    });
-    return {
-      accessToken,
-      refreshToken,
-    };
+      expiresIn: this.configService.getOrThrow('JWT_REFRESH_TOKEN_TTL'),
+    })
+
+    return {accessToken, refreshToken}
   }
+
 }
