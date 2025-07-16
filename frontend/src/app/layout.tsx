@@ -5,9 +5,10 @@ import {ModalsProvider} from "@/context/ModalContext";
 import Modals from "@/modals";
 import GradientLayout from "@/layouts/GradientLayout";
 import React from "react";
-import {CreateTaskProvider} from "@/context/CreateTaskContext";
-import {OptimisticTagsProvider} from "@/context/OptimisticTagsContext";
-
+import {CreateTaskProvider} from "@/context/forms/CreateTaskContext";
+import {OptimisticTagsProvider} from "@/context/forms/OptimisticTagsContext";
+import EditProfileProvider, {EditProfileInfoProvider} from "@/context/forms/RegisterContext";
+import { Toaster } from 'react-hot-toast';
 const inter = Inter({
     subsets: ["latin"],
     variable: "--font-inter",
@@ -24,14 +25,22 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="ru">
         <body className={`${inter.variable} font-sans antialiased`}>
         <ModalsProvider>
             <CreateTaskProvider>
                 <OptimisticTagsProvider>
-                    {children}
-                    <GradientLayout/>
-                    <Modals/>
+                    <EditProfileInfoProvider>
+                        {children}
+                        <GradientLayout/>
+                        <Modals/>
+                        <Toaster
+                        toastOptions={{
+                            position: "bottom-right",
+                            duration: 5000,
+                        }}
+                        />
+                    </EditProfileInfoProvider>
                 </OptimisticTagsProvider>
             </CreateTaskProvider>
         </ModalsProvider>

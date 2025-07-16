@@ -1,5 +1,5 @@
 import {useContext} from "react";
-import OptimisticTagsContext from "@/context/OptimisticTagsContext";
+import OptimisticTagsContext from "@/context/forms/OptimisticTagsContext";
 
 export const useOptimisticTags = () => {
     const optimisticContext = useContext(OptimisticTagsContext);

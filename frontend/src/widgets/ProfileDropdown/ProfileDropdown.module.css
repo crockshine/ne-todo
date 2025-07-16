@@ -6,12 +6,6 @@
     gap: 10px;
 }
 
-.info{
-    align-items: end;
-    display: flex;
-    flex-direction: column;
-}
-
 .userInfo span:first-child{
     font-weight: bold;
     font-size: medium;
@@ -20,23 +14,40 @@
     font-size: small;
 }
 
+
+
+.info{
+    align-items: end;
+    display: flex;
+    flex-direction: column;
+}
+
 .trigger{
     padding: 5px 15px;
-    background-color: var(--card);
     border-radius: 10px;
+    transition: .3s;
+    cursor: pointer;
+}
+.settings{
     transition: .3s;
 }
 
 .trigger:hover{
     background-color: var(--card-foreground);
+    .settings{
+        transform: rotate(40deg);
+    }
 }
 
-.profileForm{
-    display: flex;
-    flex-direction: column;
-    padding: 2px;
+.user{
+    background-color: var(--card);
 }
 
-.profileForm  small {
-    opacity: .3;
+.login{
+    background-color: var(--primary);
+    color: var(--secondary);
+}
+
+.login:hover{
+    color: var(--primary);
 }

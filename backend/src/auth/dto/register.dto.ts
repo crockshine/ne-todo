@@ -14,6 +14,6 @@ export class RegisterDto {
 
   @IsNotEmpty()
   @MinLength(6, {message: 'Минимум 6 символов'})
-  @ApiProperty({name: 'name'})
+  @ApiProperty({name: 'password'})
   password: string;
 }

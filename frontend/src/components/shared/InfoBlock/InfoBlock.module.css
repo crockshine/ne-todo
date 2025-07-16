@@ -1,17 +1,38 @@
+/*оболочка*/
 .wrapper{
     width: 100%;
     height: fit-content;
     display: flex;
     flex-direction: column;
+}
+
+/*label*/
+.defaultLabel {
     align-items: center;
     gap: 10px;
 }
 
-.wrapper p{
+.defaultLabel span{
     font-weight: 600;
 }
 
+.smallLabel {
+    align-items: start;
+    gap: 2px;
+}
+
+.smallLabel small{
+    opacity: 0.2;
+}
+
+/*ошибка*/
 .error{
     font-size: 14px;
+    font-weight: 400 !important;
     color: rgba(255, 0, 59, 0.76);
+}
+
+.smallError{
+    font-size: 12px;
+    opacity: 0.5;
 }

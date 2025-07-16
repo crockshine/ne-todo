@@ -1,12 +1,6 @@
-
 import {makeAutoObservable} from "mobx";
-import {ITag} from "@/types/checkbox.interface";
+import {IUser} from "@/api/profile";
 
-interface IUser {
-    username: string;
-    email: string;
-    tags?: ITag[]
-}
 
 export interface IUserStore {
     user: IUser | null;
@@ -14,7 +8,7 @@ export interface IUserStore {
 }
 
 class UserStore implements IUserStore{
-    user: IUser | null = {email: "mihail@mail.ru", username: 'Оболтус'};
+    user: IUser | null = {email: "mihail@mail.ru", username: 'Оболтус', password: '123123'};
 
     constructor() {
         makeAutoObservable(this);

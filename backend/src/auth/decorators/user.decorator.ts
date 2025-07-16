@@ -1,6 +1,7 @@
 import {createParamDecorator, ExecutionContext, NotFoundException} from "@nestjs/common";
 import {User as TUser} from "@prisma/client";
 
+// выдает User из бд по id из jwt из хедера Bearer
 export const User = createParamDecorator(
   (data: keyof TUser, ctx: ExecutionContext) => {
     const request = ctx.switchToHttp().getRequest();

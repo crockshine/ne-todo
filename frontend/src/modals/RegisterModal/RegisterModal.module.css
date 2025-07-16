@@ -1,0 +1,15 @@
+.tagListWrapper{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.content{
+    gap: 30px;
+}

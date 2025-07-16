@@ -23,7 +23,7 @@ const AddTagModal = () => {
     const {isOpen, onClose, closeAll} = useModal()
     const isOpened = isOpen('addTag')
 
-    const {optCreateTag, formState,reset,handleSubmit, register} = useOptimisticTags()
+    const {optCreateTag, formState, reset, handleSubmit, register} = useOptimisticTags()
 
 
     const handleOpenChange = (state: boolean) => {

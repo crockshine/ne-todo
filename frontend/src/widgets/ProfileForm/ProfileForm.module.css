@@ -1,0 +1,17 @@
+.profileForm{
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+}
+
+.profileForm  small {
+    opacity: .3;
+}
+
+.defaultForm{
+    gap: 10px;
+}
+
+.smallForm{
+    gap: 5px;
+}

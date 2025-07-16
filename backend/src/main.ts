@@ -25,12 +25,12 @@ import * as CookieParser from 'cookie-parser'
 
   // чтение env
   const config = app.get(ConfigService);
-  const CORS = config.getOrThrow<string>('CORS')
+  const FRONTEND_URL = config.getOrThrow<string>('FRONTEND_URL')
   const PORT = config.getOrThrow<string>('PORT')
 
   // CORS
   app.enableCors({
-    origin: CORS,
+    origin: FRONTEND_URL,
     credentials: true,
   });
 

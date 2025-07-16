@@ -3,29 +3,21 @@ import React, {createContext, ReactNode, startTransition, useOptimistic} from 'r
 import {ITag, IUITag} from "@/types/checkbox.interface";
 import tagsStore from "@/stores/tags.store";
 import {
-    FieldErrors,
-    useForm,
-    UseFormHandleSubmit,
-    UseFormRegister,
-    UseFormReset,
-    UseFormSetValue
+    useForm, UseFormReset,
 } from "react-hook-form";
 import {AddTagFormData, addTagSchema} from "@/validations/add-tag.validation";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {observer} from "mobx-react-lite";
+import {IBaseFormInterface} from "@/context/base-form.interface";
 
 
-interface IOptimisticTagsContext {
+interface IOptimisticTagsContext extends IBaseFormInterface<AddTagFormData> {
     optimisticTags: IUITag[];
     optCreateTag: (newTag: ITag) => void
     optRetryAddTag: (id: string) => void;
     optDeleteTag: (id: string, isError?: boolean) => void;
 
-    register: UseFormRegister<AddTagFormData>;
-    reset: UseFormReset<AddTagFormData>;
-    handleSubmit: UseFormHandleSubmit<AddTagFormData>;
-    setValue: UseFormSetValue<AddTagFormData>;
-    formState: { errors: FieldErrors<AddTagFormData> };
+    reset: UseFormReset<AddTagFormData>
 }
 
 const OptimisticTagsContext = createContext<IOptimisticTagsContext | undefined>(undefined);

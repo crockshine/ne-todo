@@ -4,6 +4,7 @@ import React, {createContext, ReactNode, useState} from 'react';
 export type ModalsList =
     "none"
     | "addTag"
+    | "register"
 
 interface IModalContext {
     currentModal: ModalsList;
